@@ -19,7 +19,8 @@ Route::get('/', [PagesController::class, 'index']);
 
 
 Route::get('/about', [PagesController::class, 'about']);
-Route::get('/services', [PagesController::class, 'services']);
+Route::get('/trips', [PagesController::class, 'trips']);
+Route::get('/fun', [PagesController::class, 'fun']);
 
 Route::resource('posts','PostsController');
 Auth::routes();
@@ -28,4 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/gmaps', 'HomeController@gmaps');
+

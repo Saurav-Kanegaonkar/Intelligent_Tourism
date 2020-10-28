@@ -16,12 +16,16 @@ class PagesController extends Controller
         $title = "Welcome to About Page";
         return view('pages.about')->with('title',$title);
     }
-    public function services()
+    public function trips()
     {
         $data = array(
-            'title' => 'Services',
-            'services' => ['Web Design', 'Programming', 'SEO']
+            'title' => 'Trips',
+            'trips' => ['Maharashtra', 'Gujrat', 'Goa']
         );
-        return view('pages.services')->with($data);
+        return view('pages.trips')->with($data);
+    }
+    public function fun()
+    {
+        return view('pages.fun');
     }
 }

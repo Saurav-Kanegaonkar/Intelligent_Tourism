@@ -37,8 +37,9 @@
           </ul>
         </li> --}}
         <li><a href="/about">About</a></li>
-        <li><a href="/services">Service</a></li>
         <li><a href="/posts">Blog</a></li>
+        <li><a href="/trips">Trips</a></li>
+        <li><a href="/fun">Fun</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if (Auth::guest())

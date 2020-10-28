@@ -41,7 +41,6 @@ body {
     background: #bdc3c7;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -161,7 +160,21 @@ a.hiddenanchor{
     font-size: 14px;
 }
 
-#wrapper input[type="text"], #wrapper input[type="password"], #wrapper input[type="number"] {
+#wrapper input[type="text"], #wrapper input[type="password"], #wrapper input[type="number"], option{
+    width: 89%;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    margin: 10px 0 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 10px 5px 10px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: transparent;
+    outline: none;
+}
+
+option{
     width: 89%;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
@@ -208,6 +221,7 @@ p.change_link {
 /*--agileits--*/
 #register, #login{
     position: absolute;
+    padding-bottom: 0px;
     padding: 64px;
     background: #272727;
 }
