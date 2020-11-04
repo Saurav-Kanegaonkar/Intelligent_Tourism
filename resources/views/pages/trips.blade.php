@@ -109,55 +109,55 @@
 					<a class="hiddenanchor w3layouts agileits" id="toregister"></a>
 					<div id="wrapper">
 						<div id="login" class="animate w3layouts agileits form">
-							<h2 class="w3layouts agileits">Trips</h2>
-							
-						<form  action="" autocomplete="on" method="POST">
+                            <h2 class="w3layouts agileits">Trips</h2>
+                            
+                            {!! Form::open(['action' => 'PagesController@trips_submit', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                             @csrf
-                                <label for="" class="yay">Select city to explore </label><br>
-                                <select name="city" id="">
+                                <label for="" class="yay">{{ __('Select city to explore') }}</label><br>
+                                <select name="city" id="" required>
                                     <option value="" disabled selected>--Select City--</option>
-                                    <option value="">Mumbai</option>
-                                    <option value="">Rajkot</option>
-                                    <option value="">Surat</option>
-                                    <option value="">Pune</option>
-                                    <option value="">Bangalore</option>
-                                    <option value="">Chennai</option>
-                                    <option value="">Chandigarh</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Rajkot">Rajkot</option>
+                                    <option value="Surat">Surat</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Bangalore">Bangalore</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Chandigarh">Chandigarh</option>
                                 </select>
 								
 								<br><br>
 								<label for="days" class="yay">{{ __('Number of Days') }}</label>
-								<input id="days" type="number" required>
+								<input id="days" type="number" max="3" name="days" required>
                                 
                                 <br><br>
                                 <label for="days" class="yay">{{ __('Activies to be done!') }}</label>
                                 <br><br>
 								<div class="form-check bord">
-                                    <input type="checkbox" id="c1" name="cc" />
+                                    <input type="checkbox" id="c1" name="activity[]" value="Shopping"/>
                                     <label for="c1"><span></span>Shopping</label>
                                     <br><br>
-                                    <input type="checkbox" id="c2" name="cc" />
+                                    <input type="checkbox" id="c2" name="activity[]" value="Sight-seeing"/>
                                     <label for="c2"><span></span>Sight-seeing</label>
                                     <br><br>
-                                    <input type="checkbox" id="c3" name="cc" />
+                                    <input type="checkbox" id="c3" name="activity[]" value="Trekking"/>
                                     <label for="c3"><span></span>Trekking</label>
                                     <br><br>
-                                    <input type="checkbox" id="c4" name="cc" />
+                                    <input type="checkbox" id="c4" name="activity[]" value="Zoo"/>
                                     <label for="c4"><span></span>Zoo</label>
                                     <br><br>
-                                    <input type="checkbox" id="c5" name="cc" />
+                                    <input type="checkbox" id="c5" name="activity[]" value="Beach"/>
                                     <label for="c5"><span></span>Beach</label>
                                     <br><br>
-                                    <input type="checkbox" id="c6" name="cc" />
+                                    <input type="checkbox" id="c6" name="activity[]" value="Malls"/>
                                     <label for="c6"><span></span>Malls</label>
                                     <br><br>
-                                    <input type="checkbox" id="c7" name="cc" />
+                                    <input type="checkbox" id="c7" name="activity[]" value="Garden"/>
                                     <label for="c7"><span></span>Parks/Garden</label>
                                     <br><br>
-                                    <input type="checkbox" id="c8" name="cc" />
+                                    <input type="checkbox" id="c8" name="activity[]" value="Palaces"/>
                                     <label for="c8"><span></span>Palaces</label>
                                     <br><br>
-                                    <input type="checkbox" id="c9" name="cc" />
+                                    <input type="checkbox" id="c9" name="activity[]" value="Temples"/>
                                     <label for="c9"><span></span>Temples</label>
                                     <br><br>
                                 </div>
@@ -170,7 +170,7 @@
 									<div class="clear"></div>
 								</div>
 								<div class="clear"></div>
-							</form>
+                            {!! Form::close() !!}
 							<div class="clear"></div>
 							<br><br><br>
 						</div>
@@ -179,7 +179,6 @@
 			</section>
 		</div>
 		<div class="clear"></div>
-
 	</div>
 </body>
 <!-- //Body -->
