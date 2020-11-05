@@ -1,6 +1,19 @@
 @extends('layouts.main')
 
+@section('styles')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<style>
+a {
+    color: #337ab7 !important;
+}
+body{
+    background: #00467F;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #A5CC82, #00467F);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #A5CC82, #00467F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+</style>
+@endsection
 @section('content')
 @include('partials.map')
 
@@ -9,8 +22,9 @@
         <div class="col-md-12">
             <div class="content-box content-single">
                 <article class="post-8 page type-page status-publish hentry">
-                    <header>
-                        <h1 class="entry-title" style="text-align: center">Places You Can Visit</h1></header>
+                    <header style="background-color:#ffb100">
+                        <h1 class="entry-title" style="text-align: center; color:#00467F; padding: 5px;"><strong>Places You Can Visit</strong></h1>
+                    </header>
                     <div class="entry-content entry-summary">
                         <div class="geodir-loop-container">
                             <ul class="geodir-category-list-view clearfix gridview_onethird geodir-listing-posts geodir-gridview gridview_onethird">
@@ -27,7 +41,7 @@
                                                             <li>
                                                                 <a href="{{ route('place_info', $place->place_id) }}">
                                                                     <?php
-                                                                        $str= "http://lsapp.io/assets/images/shops/a".$place->place_id.".jpg";
+                                                                        $str= "http://lsapp.test/assets/images/shops/a".$place->place_id.".jpg";
                                                                     ?>
                                                                     <img src={{$str}} width="1440" height="960" class="geodir-lazy-load align size-medium_large" />
                                                                 </a>
@@ -39,6 +53,7 @@
                                         </div>
                                         <div class="gd-list-item-right ">
                                             <div class="geodir-post-title">
+                                                <br>
                                                 <h2 class="geodir-entry-title"> <a href="{{ route('place_info', $place->place_id) }}" title="View: {{ $place->name }}">{{ $place->name }}</a></h2></div>
                                             @foreach($activitiyOfEachPlace[$i] as $act)
                                                 <div class="gd-badge-meta gd-badge-alignleft" title="{{ $act }}">

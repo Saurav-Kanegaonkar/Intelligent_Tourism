@@ -173,6 +173,7 @@
 								<p class="change_link w3layouts agileits">
 									Don't have an account? <a href="{{ route('register') }}" class="to_register">Sign Up!</a>
 								</p>
+
 								<div class="clear"></div>
 							</form>
 							<div class="clear"></div>
@@ -183,6 +184,7 @@
 			</section>
 		</div>
 		<div class="clear"></div>
+		<br><br>
 
 	</div>
 </body>

@@ -8,7 +8,7 @@
                 <article class="post-180 gd_place type-gd_place status-publish hentry gd_placecategory-hotels">
                     @foreach ($place_detail as $place)
                         <header>
-                            <h1 class="entry-title">{{ $place->name }}</h1>
+                            <h1 class="entry-title" style="color: #337ab7; font-weight: 600; font-size: x-large;">{{ $place->name }}</h1>
                         </header>
                         <div class="entry-content entry-summary">
                             {{-- @if($place->photos->count())
@@ -22,15 +22,18 @@
                             @endif --}}
                             @if(count($activities))
                                 <div class="geodir-single-taxonomies-container">
-                                    <p class="geodir_post_taxomomies clearfix"> 
-                                        <span class="geodir-category">
-                                            Activities: 
+                                    <p class="clearfix"> 
+                                        <span class="geodir-category high">
+                                            <strong>Activities: </strong>
                                             @foreach($activities as $act)
-                                                {{ $act }}{{ !$loop->last ? ',' : ''  }}
+                                                <div class="gd-badge-meta gd-badge-alignleft" title="{{ $act }}">
+                                                    <div class="gd-badge" style="background-color:#ffb100;color:#ffffff;"><i class="fas fa-certificate"></i> <span class='gd-secondary'>{{ $act }}</span></div>
+                                                </div>
                                             @endforeach
                                         </span>
                                     </p>
                                 </div>
+                                <br><br>
                             @endif
                             <div class="geodir-single-tabs-container">
                                 <div class="geodir-tabs" id="gd-tabs">
@@ -46,18 +49,20 @@
                                             <dd class=""><a data-tab="#working_hours" data-status="enable"><i class="fas fa-clock" aria-hidden="true"></i>Working Hours</a></dd>
                                         @endif
                                     </dl>
-                                    <ul class="geodir-tabs-content geodir-entry-content " style="z-index: 0; position: relative;">
+                                    <ul class="geodir-tabs-content geodir-entry-content high" style="z-index: 0; position: relative;">
                                         <li id="post_contentTab" style="display: none;"><span id="post_content"></span>
                                             <div id="geodir-tab-content-post_content" class="hash-offset"></div>
                                             <div class="geodir-post-meta-container">
                                                 <div class="geodir_post_meta  geodir-field-post_content">
-                                                    <p>Address: {{ $place->address }}</p>
-                                                    <p>Description: {{ $place->description }}</p>
+                                                    <p><Strong>Address:</Strong></p>
+                                                    <p>{{ $place->address }}</p>
+                                                    <p><Strong>Description:</Strong></p>
+                                                    <p>{{ $place->description }}</p>
                                                     @if(count($Days))
                                                         @if($open)
-                                                            <p>Place is open and will close at {{ $close }}.</p>
+                                                            <p><Strong>Place is open and will close at {{ $close }}.</Strong></p>
                                                         @else
-                                                            <p>Place is closed since {{ $close }}</p>
+                                                            <p><Strong>Place is closed since {{ $close }}</Strong></p>
                                                         @endif
                                                     @endif
                                                     <p></p>
@@ -94,7 +99,7 @@
                                                     $i =0;
                                                 ?>
                                                 @foreach($Days as $day)
-                                                    <p>{{$Vars[$i]}}- {{$day->from_hours}}:{{$day->from_minutes}} To {{$day->to_hours}}:{{$day->to_minutes}}</p>
+                                                    <p><strong>{{$Vars[$i]}}</strong>- {{$day->from_hours}}:{{$day->from_minutes}} To {{$day->to_hours}}:{{$day->to_minutes}}</p>
                                                     <?php
                                                         $i++;
                                                     ?>
@@ -128,6 +133,17 @@
     .center-gallery {
         width: 50%;
         margin: auto;
+    }
+
+    .high{
+        font-size: medium;
+        padding: 0px;
+        margin: 0px;
+    }
+    body{
+        background: #74ebd5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
 }
 </style>

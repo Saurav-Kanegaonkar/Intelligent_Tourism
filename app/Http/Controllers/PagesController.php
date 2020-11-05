@@ -150,7 +150,7 @@ class PagesController extends Controller
                 else
                 {
                     $open=0;
-                    $close="";
+                    $close=$day->to_hours.":".$day->to_minutes;
                 }
             }
         }
