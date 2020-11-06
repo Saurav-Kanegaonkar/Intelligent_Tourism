@@ -5176,6 +5176,11 @@ body ul.geodir-category-list-view li .gd-list-item-right .geodir-post-content-co
     padding: 0
 }
 
+body ul.geodir-category-list-view li .gd-list-item-right .geodir-post-checkbox-container {
+    margin: 0;
+    padding: 0
+}
+
 body ul.geodir-category-list-view li .gd-list-item-right .geodir-field-post_content .gd-read-more-fade,
 body ul.geodir-category-list-view li .gd-list-item-right .geodir-post-content-container .gd-read-more-fade {
     position: absolute;
@@ -5183,6 +5188,16 @@ body ul.geodir-category-list-view li .gd-list-item-right .geodir-post-content-co
     left: 0;
     width: 100%;
     text-align: center;
+    margin: 0;
+    padding: 30px 0 0;
+    background-image: linear-gradient(to bottom, transparent, #fff)
+}
+
+body ul.geodir-category-list-view li .gd-list-item-right .geodir-post-checkbox-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: left;
     margin: 0;
     padding: 30px 0 0;
     background-image: linear-gradient(to bottom, transparent, #fff)

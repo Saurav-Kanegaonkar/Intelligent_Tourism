@@ -24,6 +24,7 @@ Route::get('/fun', [PagesController::class, 'fun']);
 Route::post('/result', [PagesController::class, 'trips_submit']);
 // Route::get('/place/{place}', [PagesController::class, 'place_info']);
 Route::get('/place/{place}', 'PagesController@place_info')->name('place_info');
+Route::post('/result2', [PagesController::class, 'places_submit']);
 
 Route::resource('posts','PostsController');
 Auth::routes();

@@ -156,6 +156,11 @@ class PagesController extends Controller
         }
         return view('maps.place', compact('place_detail','activities','Days','Vars','open','close'));
     }
+
+    public function places_submit(Request $request)
+    {
+        return  ($request);
+    }
     public function fun()
     {
         return view('pages.fun');
