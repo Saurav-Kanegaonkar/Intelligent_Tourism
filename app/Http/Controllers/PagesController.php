@@ -159,52 +159,53 @@ class PagesController extends Controller
 
     public function places_submit(Request $request)
     {
-        $getLatitudes="select latitude from place where place_id in ( ";
-        $getLongitudes="select longitude from place where place_id in ( ";
-        for($i =0;$i<count($request->checkbox);$i++)
-        {
-            if($i == count($request->checkbox)-1)
-            {
-                $getLatitudes .= $request->checkbox[$i]." )";
-                $getLongitudes .= $request->checkbox[$i]." )";
-            }
-            else
-            {
-                $getLatitudes .= $request->checkbox[$i]." , ";
-                $getLongitudes .= $request->checkbox[$i]." , ";
-            }
-        }
-        $latitudes= DB::select($getLatitudes);
-        $longitudes= DB::select($getLongitudes);
-        $str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=";
-        $l="";
-        for($i=0;$i<count($latitudes);$i++)
-        {
-            if($i == count($latitudes)-1)
-            {
-                $l .=$latitudes[$i]->latitude.",".$longitudes[$i]->longitude;
-            }
-            else
-            {
-                $l .=$latitudes[$i]->latitude.",".$longitudes[$i]->longitude."|";
-            }
-        }
-        $str=$str.$l."&destinations=".$l."&departure_time=now"."&key=KHICvAsdohw3sxQt36C9BvxNkYlNZ";
-        $geocodeFrom = file_get_contents($str);
-        $addr="select address from place where place_id in (";
-        for($i =0;$i<count($request->checkbox);$i++)
-        {
-            if($i == count($request->checkbox)-1)
-            {
-                $addr .= $request->checkbox[$i]." )";
-            }
-            else
-            {
-                $addr .= $request->checkbox[$i]." , ";
-            }
-        }
-        $getAddress=DB::select($addr);
-        return ($getAddress);
+        // $getLatitudes="select latitude from place where place_id in ( ";
+        // $getLongitudes="select longitude from place where place_id in ( ";
+        // for($i =0;$i<count($request->checkbox);$i++)
+        // {
+        //     if($i == count($request->checkbox)-1)
+        //     {
+        //         $getLatitudes .= $request->checkbox[$i]." )";
+        //         $getLongitudes .= $request->checkbox[$i]." )";
+        //     }
+        //     else
+        //     {
+        //         $getLatitudes .= $request->checkbox[$i]." , ";
+        //         $getLongitudes .= $request->checkbox[$i]." , ";
+        //     }
+        // }
+        // $latitudes= DB::select($getLatitudes);
+        // $longitudes= DB::select($getLongitudes);
+        // $str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=";
+        // $l="";
+        // for($i=0;$i<count($latitudes);$i++)
+        // {
+        //     if($i == count($latitudes)-1)
+        //     {
+        //         $l .=$latitudes[$i]->latitude.",".$longitudes[$i]->longitude;
+        //     }
+        //     else
+        //     {
+        //         $l .=$latitudes[$i]->latitude.",".$longitudes[$i]->longitude."|";
+        //     }
+        // }
+        // $str=$str.$l."&destinations=".$l."&departure_time=now"."&key=KHICvAsdohw3sxQt36C9BvxNkYlNZ";
+        // $geocodeFrom = file_get_contents($str);
+        // $addr="select address from place where place_id in (";
+        // for($i =0;$i<count($request->checkbox);$i++)
+        // {
+        //     if($i == count($request->checkbox)-1)
+        //     {
+        //         $addr .= $request->checkbox[$i]." )";
+        //     }
+        //     else
+        //     {
+        //         $addr .= $request->checkbox[$i]." , ";
+        //     }
+        // }
+        //$getAddress=DB::select($addr);
+        $address=$request->checkbox;
+        return view('maps.result2', compact('address'));
     }
 
     public function fun()

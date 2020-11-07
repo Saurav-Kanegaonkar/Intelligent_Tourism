@@ -29,21 +29,29 @@ class TspLocation
 
 	public static function distance($lat1, $lon1, $lat2, $lon2, $unit = 'M')
 	{
-		if ($lat1 == $lat2 && $lon1 == $lon2) return 0;
+		// if ($lat1 == $lat2 && $lon1 == $lon2) return 0;
 
-		$theta = $lon1 - $lon2; 
-		$dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
-		$dist = acos($dist); 
-		$dist = rad2deg($dist); 
-		$miles = $dist * 60 * 1.1515;
-		$unit = strtoupper($unit);
+		// $theta = $lon1 - $lon2; 
+		// $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
+		// $dist = acos($dist); 
+		// $dist = rad2deg($dist); 
+		// $miles = $dist * 60 * 1.1515;
+		// $unit = strtoupper($unit);
 
-		if ($unit == "K")
-			return ($miles * 1.609344); 
-		else if ($unit == "N")
-			return ($miles * 0.8684);
-		else
-			return $miles;
+		// if ($unit == "K")
+		// 	return ($miles * 1.609344); 
+		// else if ($unit == "N")
+		// 	return ($miles * 0.8684);
+		// else
+		// 	return $miles;
+
+		$str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=".$lat1.",".$lon1."&destinations=".$lat2.",".$lon2."&departure_time=now"."&key=KHICvAsdohw3sxQt36C9BvxNkYlNZ";
+		$geocodeFrom = file_get_contents($str);
+		$dist = json_decode($geocodeFrom);
+		$dist1= $dist->rows[0]->elements[0]->distance->value;
+		echo "destination_addresses: ".$dist->destination_addresses[0]."<br>origin_addresses: ".$dist->origin_addresses[0]."<br>dist ".$dist1."<br>";
+		return $dist1;
+		
 	}
 }
 
@@ -285,12 +293,12 @@ class TspBranchBound
 	}
 
 	public function printPath($list)
-	{
-		echo "\nPath: \n";
+	{	
+		echo "<br> \nPath: \n";
 		for ($i = 0; $i < count($list); $i++) {
 			$start = $list[$i][0] + 1;
 			$end = $list[$i][1] + 1;
-			echo $start . " -> " . $end . "\n";
+			echo $start . " -> " . $end . "<br>";
 		}
 	}
 
@@ -374,12 +382,38 @@ class TspBranchBound
 try
 {
 	$tsp = TspBranchBound::getInstance();
-	$tsp->addLocation(array('id'=>'newquay', 'latitude'=>50.413608, 'longitude'=>-5.083364));
-	$tsp->addLocation(array('id'=>'manchester', 'latitude'=>53.480712, 'longitude'=>-2.234377));
-	$tsp->addLocation(array('id'=>'london', 'latitude'=>51.500152, 'longitude'=>-0.126236));
-	$tsp->addLocation(array('id'=>'birmingham', 'latitude'=>52.483003, 'longitude'=>-1.893561));
+	// $tsp->addLocation(array('id'=>'newquay', 'latitude'=>50.413608, 'longitude'=>-5.083364));
+	// $tsp->addLocation(array('id'=>'manchester', 'latitude'=>53.480712, 'longitude'=>-2.234377));
+	// $tsp->addLocation(array('id'=>'london', 'latitude'=>51.500152, 'longitude'=>-0.126236));
+	// $tsp->addLocation(array('id'=>'birmingham', 'latitude'=>52.483003, 'longitude'=>-1.893561));
+	
+	$str1="https://api.distancematrix.ai/maps/api/geocode/json?address=";
+	
+	for($j=0; $j<count($address); $j++){
+		for ($i=0; $i < strlen($address[$j]); $i++) { 
+			if($address[$j][$i]==' ')
+			{
+				$address[$j][$i]='+';
+			}
+		}
+	}
+	$i=0;
+	foreach ($address as $a) {
+		$str = $str1.$a."&key=KHICvAsdohw3sxQt36C9BvxNkYlNZ";
+		$geocodeFrom = file_get_contents($str);
+		$latlong = json_decode($geocodeFrom);
+		//echo $latlong->result[0]->geometry->location->lat.",".$latlong->result[0]->geometry->location->lng."<br>";
+		$tsp->addLocation(array('id'=>$i, 'latitude'=> $latlong->result[0]->geometry->location->lat, 'longitude'=>$latlong->result[0]->geometry->location->lng));
+		echo $i." ".$a."<br>";
+		$i++;
+	}
+	
+	// echo '<pre>' . print_r($latlong->result[0]->geometry->location->lat, true) . '</pre>';
+	//echo $latlong->result[0]->geometry->location->lat;
+	//$l= $latlong["result"][0]["geometry"]["location"]["lat"];
 	$ans = $tsp->solve();
 	echo "\nTotal cost: " . ceil($ans['cost']) . "\n\n";
+	
 }
 catch (Exception $e)
 {
