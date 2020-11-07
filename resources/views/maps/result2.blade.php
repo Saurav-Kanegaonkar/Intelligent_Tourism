@@ -196,10 +196,11 @@ class TspBranchBound
 
 		$this->costMatrix = array();
 		$n_locations = count($this->locations);
+		$time4= time();
 		for ($i = 0; $i < $n_locations; $i++)
 		{
 			echo $i+1 . ". " . $this->locations[$i]->id . "\n";
-			for ($j = 0; $j < $n_locations; $j++)
+			for ($j = $i; $j < $n_locations; $j++)
 			{
 				$distance = INF;
 				if ($i!=$j)
@@ -209,9 +210,13 @@ class TspBranchBound
 					$distance = TspLocation::distance($loc1->latitude, $loc1->longitude, $loc2->latitude, $loc2->longitude);
 				}
 				$this->costMatrix[$i][$j] = $distance;
+				$this->costMatrix[$j][$i] = $distance;
+
 			}
 		}
-
+		$time5= time();
+		echo "time diff 3: ".($time5-$time4);
+		echo "<br>";
 		$this->n = count($this->costMatrix);
 
 		return true;
@@ -387,31 +392,19 @@ try
 	// $tsp->addLocation(array('id'=>'london', 'latitude'=>51.500152, 'longitude'=>-0.126236));
 	// $tsp->addLocation(array('id'=>'birmingham', 'latitude'=>52.483003, 'longitude'=>-1.893561));
 	
-	$str1="https://api.distancematrix.ai/maps/api/geocode/json?address=";
-	
-	for($j=0; $j<count($address); $j++){
-		for ($i=0; $i < strlen($address[$j]); $i++) { 
-			if($address[$j][$i]==' ')
-			{
-				$address[$j][$i]='+';
-			}
-		}
-	}
 	$i=0;
-	foreach ($address as $a) {
-		$str = $str1.$a."&key=KHICvAsdohw3sxQt36C9BvxNkYlNZ";
-		$geocodeFrom = file_get_contents($str);
-		$latlong = json_decode($geocodeFrom);
-		//echo $latlong->result[0]->geometry->location->lat.",".$latlong->result[0]->geometry->location->lng."<br>";
-		$tsp->addLocation(array('id'=>$i, 'latitude'=> $latlong->result[0]->geometry->location->lat, 'longitude'=>$latlong->result[0]->geometry->location->lng));
-		echo $i." ".$a."<br>";
+	$time1 = time();
+	
+	for($j=0;$j<count($latitudes);$j++) 
+	{
+		$tsp->addLocation(array('id'=>$i, 'latitude'=> $latitudes[$i], 'longitude'=> $longitudes[$i]));
 		$i++;
 	}
 	
-	// echo '<pre>' . print_r($latlong->result[0]->geometry->location->lat, true) . '</pre>';
-	//echo $latlong->result[0]->geometry->location->lat;
-	//$l= $latlong["result"][0]["geometry"]["location"]["lat"];
 	$ans = $tsp->solve();
+	$time3 = time();
+	echo "time diff 2: ".($time3-$time1);
+	echo "<br>";
 	echo "\nTotal cost: " . ceil($ans['cost']) . "\n\n";
 	
 }

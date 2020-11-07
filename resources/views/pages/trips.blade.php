@@ -117,11 +117,9 @@
                                 <select name="city" id="" required>
                                     <option value="" disabled selected>--Select City--</option>
                                     <option value="Mumbai">Mumbai</option>
-                                    <option value="Rajkot">Rajkot</option>
-                                    <option value="Surat">Surat</option>
-                                    <option value="Pune">Pune</option>
-                                    <option value="Bangalore">Bangalore</option>
-                                    <option value="Chennai">Chennai</option>
+                                    <option value="Ahmedabad">Ahmedabad</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Agra">Agra</option>
                                     <option value="Chandigarh">Chandigarh</option>
                                 </select>
 								
