@@ -49,7 +49,7 @@ class TspLocation
 		$geocodeFrom = file_get_contents($str);
 		$dist = json_decode($geocodeFrom);
 		$dist1= $dist->rows[0]->elements[0]->distance->value;
-		echo "destination_addresses: ".$dist->destination_addresses[0]."<br>origin_addresses: ".$dist->origin_addresses[0]."<br>dist ".$dist1."<br>";
+		// echo "destination_addresses: ".$dist->destination_addresses[0]."<br>origin_addresses: ".$dist->origin_addresses[0]."<br>dist ".$dist1."<br>";
 		return $dist1;
 		
 	}
@@ -196,10 +196,10 @@ class TspBranchBound
 
 		$this->costMatrix = array();
 		$n_locations = count($this->locations);
-		$time4= time();
+		// $time4= time();
 		for ($i = 0; $i < $n_locations; $i++)
 		{
-			echo $i+1 . ". " . $this->locations[$i]->id . "\n";
+			// echo $i+1 . ". " . $this->locations[$i]->id . "\n";
 			for ($j = $i; $j < $n_locations; $j++)
 			{
 				$distance = INF;
@@ -214,9 +214,9 @@ class TspBranchBound
 
 			}
 		}
-		$time5= time();
-		echo "time diff 3: ".($time5-$time4);
-		echo "<br>";
+		// $time5= time();
+		// echo "time diff 3: ".($time5-$time4);
+		// echo "<br>";
 		$this->n = count($this->costMatrix);
 
 		return true;
@@ -299,7 +299,7 @@ class TspBranchBound
 
 	public function printPath($list)
 	{	
-		echo "<br> \nPath: \n";
+		echo "<br> \nPath: <br>";
 		for ($i = 0; $i < count($list); $i++) {
 			$start = $list[$i][0] + 1;
 			$end = $list[$i][1] + 1;
@@ -393,7 +393,7 @@ try
 	// $tsp->addLocation(array('id'=>'birmingham', 'latitude'=>52.483003, 'longitude'=>-1.893561));
 	
 	$i=0;
-	$time1 = time();
+	// $time1 = time();
 	
 	for($j=0;$j<count($latitudes);$j++) 
 	{
@@ -402,11 +402,22 @@ try
 	}
 	
 	$ans = $tsp->solve();
-	$time3 = time();
-	echo "time diff 2: ".($time3-$time1);
-	echo "<br>";
+	// $time3 = time();
+	// echo "time diff 2: ".($time3-$time1);
+	// echo "<br>";
 	echo "\nTotal cost: " . ceil($ans['cost']) . "\n\n";
 	
+	$ids=[];
+	for($k=0;$k<count($ans['path']);$k++) 
+	{
+		$ids[]=$latitudes[$ans['path'][$k][0]];
+		$ids[]=$longitudes[$ans['path'][$k][0]];
+		if($k == count($ans['path'])-1)
+		{
+			$ids[]=$latitudes[$ans['path'][$k][1]];
+			$ids[]=$longitudes[$ans['path'][$k][1]];
+		}
+	}
 }
 catch (Exception $e)
 {
@@ -414,3 +425,57 @@ catch (Exception $e)
 	exit;
 }
 ?>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=Ry3pRty0H7reDbXBApz4QthSBpdV5tLr"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=Ry3pRty0H7reDbXBApz4QthSBpdV5tLr"></script>
+
+		
+		<script type="text/javascript">
+			var places = @json($ids);
+			var id=[];
+			for(i=0;i<places.length;i+=2)
+			{
+				var x = {lat:parseFloat(places[i]), lng:parseFloat(places[i+1])}
+				var a = {latLng: x};
+				id.push(a);
+			}
+            window.onload = function() {
+                var map, dir;
+				var mapLayer = MQ.mapLayer();
+                map = L.map('map', {
+                    layers: MQ.mapLayer(),
+                    center: [ 18.9200694, 72.82934805000001 ],
+                    zoom: 10,
+                  scrollWheelZoom:false
+                });
+
+				L.control.layers({
+					'Map': mapLayer,
+					'Hybrid': MQ.hybridLayer(),
+					'Satellite': MQ.satelliteLayer(),
+					'Dark': MQ.darkLayer(),
+					'Light': MQ.lightLayer()
+				}).addTo(map);
+
+                dir = MQ.routing.directions();
+
+                dir.optimizedRoute({
+					locations: id
+                });
+
+                map.addLayer(MQ.routing.routeLayer({
+                    directions: dir,
+                    fitBounds: true
+                }));
+            }
+        </script>
+    </head>
+
+    <body style='border:0; margin: 0; margin-bottom:50px'>
+		<div id='map' style='width: 100%; height:530px;'></div>
+    </body>
+</html>
