@@ -1,3 +1,5 @@
+@extends('layouts.main')
+@section('content')
 <?php
 class TspLocation
 {
@@ -299,12 +301,12 @@ class TspBranchBound
 
 	public function printPath($list)
 	{	
-		echo "<br> \nPath: <br>";
-		for ($i = 0; $i < count($list); $i++) {
-			$start = $list[$i][0] + 1;
-			$end = $list[$i][1] + 1;
-			echo $start . " -> " . $end . "<br>";
-		}
+		// echo "<br> \nPath: <br>";
+		// for ($i = 0; $i < count($list); $i++) {
+		// 	$start = $list[$i][0] + 1;
+		// 	$end = $list[$i][1] + 1;
+		// 	echo $start . " -> " . $end . "<br>";
+		// }
 	}
 
 	public function solve()
@@ -405,7 +407,7 @@ try
 	// $time3 = time();
 	// echo "time diff 2: ".($time3-$time1);
 	// echo "<br>";
-	echo "\nTotal cost: " . ceil($ans['cost']) . "\n\n";
+	//echo "\nTotal cost: " . ceil($ans['cost']) . "\n\n";
 	
 	$ids=[];
 	for($k=0;$k<count($ans['path']);$k++) 
@@ -479,3 +481,4 @@ catch (Exception $e)
 		<div id='map' style='width: 100%; height:530px;'></div>
     </body>
 </html>
+@endsection
