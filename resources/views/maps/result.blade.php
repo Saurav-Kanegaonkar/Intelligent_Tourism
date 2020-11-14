@@ -13,7 +13,9 @@
         background: -webkit-linear-gradient(to bottom, #A5CC82, #00467F);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to bottom, #A5CC82, #00467F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
-    
+    option{
+        width: 100px;
+    }
 </style>
 @endsection
 @section('content')
@@ -80,7 +82,7 @@
                                                 
                                                 <label class="checkbox path">
 
-                                                    <input type="checkbox" name="checkbox[]" value="{{$place->place_id}}">
+                                                    <input type="checkbox" name="checkbox[]" onclick="dothis()" class="myCheck" value="{{$place->place_id}}">
                                                     <svg viewBox="0 0 21 21">
                                                         <path d="M5,10.75 L8.5,14.25 L19.4,2.3 C18.8333333,1.43333333 18.0333333,1 17,1 L4,1 C2.35,1 1,2.35 1,4 L1,17 C1,18.65 2.35,20 4,20 L17,20 C18.65,20 20,18.65 20,17 L20,7.99769186"></path>
                                                     </svg>
@@ -95,6 +97,13 @@
                                     ?>
                                 @endforeach
                             </ul>
+                            <div class="w3layouts agileits" style="margin-left: 38%">
+                                <label for="" style="font-size:large">{{ __('Select your starting point 😎') }}</label>
+                                <select name="start_point" id="places" required>
+                                    <option value="none">-- Select Starting point for your trip --</option>
+                                </select>
+                            </div>
+                            <br><br><br>
                             <div class="clear"></div>
                             <div class="send-button w3layouts agileits">
                                 <form>
@@ -117,6 +126,32 @@
 @section('scripts')
 <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDOZF22hjdjUWzNRraAZb55W87sLkG4zEg&libraries=places&region=GB'></script>
 <script defer>
+    function dothis(){
+        var places = @json($place_detail);
+        var t=document.getElementsByClassName("myCheck");
+        var selectElement = document.getElementById('places');
+        var i, L = selectElement.options.length - 1;
+       	for(i = L; i >= 0; i--) {
+       	   selectElement.remove(i);
+       	}
+        var selectEle = document.getElementById("places"), o;
+        o = document.createElement("option");
+        o.value = "-- Select Starting point for your trip --";
+        o.appendChild(document.createTextNode("-- Select Starting point for your trip --"));
+        selectEle.appendChild(o);
+        document.getElementById("places").options[0].disabled = true;
+        for(var i=0;i<t.length;i++)
+        {
+        	if(t[i].checked)
+            {
+            	var selectEle = document.getElementById("places"), o;
+                o = document.createElement("option");
+                o.value = places[i].name;
+                o.appendChild(document.createTextNode(places[i].name));
+                selectEle.appendChild(o);
+            }
+        }
+    }
 	function initialize() {
 		var mapOptions = {
 			zoom: 10.7,
@@ -138,7 +173,7 @@
 		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         var image = new google.maps.MarkerImage("assets/images/pin.png", null, null, null, new google.maps.Size(40,52));
         var places = @json($place_detail);
-
+        
         for(place in places)
         {
             place = places[place];

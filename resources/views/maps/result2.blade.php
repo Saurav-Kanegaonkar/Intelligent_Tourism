@@ -47,7 +47,7 @@ class TspLocation
 		// else
 		// 	return $miles;
 
-		$str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=".$lat1.",".$lon1."&destinations=".$lat2.",".$lon2."&departure_time=now"."&key=KHICvAsdohw3sxQt36C9BvxNkYlNZ";
+		$str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=".$lat1.",".$lon1."&destinations=".$lat2.",".$lon2."&departure_time=now&key=xHhaXS89ZEwV9qAwgAjSucGzmNLnf";
 		$geocodeFrom = file_get_contents($str);
 		$dist = json_decode($geocodeFrom);
 		$dist1= $dist->rows[0]->elements[0]->distance->value;
@@ -352,7 +352,6 @@ class TspBranchBound
 				$min->path[] = array($i, 0);
 				// print list of cities visited;
 				$this->printPath($min->path);
-
 				// return optimal cost & etc.
 				return array ('cost' => $min->cost, 'path' => $min->path, 'locations' => $this->locations);
 			}
@@ -389,10 +388,6 @@ class TspBranchBound
 try
 {
 	$tsp = TspBranchBound::getInstance();
-	// $tsp->addLocation(array('id'=>'newquay', 'latitude'=>50.413608, 'longitude'=>-5.083364));
-	// $tsp->addLocation(array('id'=>'manchester', 'latitude'=>53.480712, 'longitude'=>-2.234377));
-	// $tsp->addLocation(array('id'=>'london', 'latitude'=>51.500152, 'longitude'=>-0.126236));
-	// $tsp->addLocation(array('id'=>'birmingham', 'latitude'=>52.483003, 'longitude'=>-1.893561));
 	
 	$i=0;
 	// $time1 = time();
@@ -420,6 +415,10 @@ try
 			$ids[]=$longitudes[$ans['path'][$k][1]];
 		}
 	}
+	$act_path=[];
+	for ($i = 0; $i < count($ans["path"]); $i++) {
+		$act_path[]= $ans["path"][$i][0];
+	}
 }
 catch (Exception $e)
 {
@@ -435,7 +434,7 @@ catch (Exception $e)
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=Ry3pRty0H7reDbXBApz4QthSBpdV5tLr"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=Ry3pRty0H7reDbXBApz4QthSBpdV5tLr"></script>
 
-		
+		<link rel='stylesheet' href='{{ asset('assets/css/timeline.css') }}' type='text/css' />
 		<script type="text/javascript">
 			var places = @json($ids);
 			var id=[];
@@ -452,9 +451,9 @@ catch (Exception $e)
                     layers: MQ.mapLayer(),
                     center: [ 18.9200694, 72.82934805000001 ],
                     zoom: 10,
-                  scrollWheelZoom:false
+                  	scrollWheelZoom:false
                 });
-
+			
 				L.control.layers({
 					'Map': mapLayer,
 					'Hybrid': MQ.hybridLayer(),
@@ -463,22 +462,117 @@ catch (Exception $e)
 					'Light': MQ.lightLayer()
 				}).addTo(map);
 
+                CustomRouteLayer = MQ.Routing.RouteLayer.extend({
+					createStopMarker: function (location, stopNumber) {
+                        var custom_icon;
+                        var marker;
+						// var ="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=51.4822656,-0.1933769&destinations=51.4822656,-0.1933769&departure_time=now&key=xHhaXS89ZEwV9qAwgAjSucGzmNLnf";
+                        custom_icon = L.icon({
+                            iconUrl: 'https://www.mapquestapi.com/staticmap/geticon?uri=poi-green_1.png',
+                            iconSize: [20, 29],
+                            iconAnchor: [10, 29],
+                            popupAnchor: [0, -29]
+                        });
+						// console.log(location.latLng.lat)
+                        marker = L.marker(location.latLng, {icon: custom_icon}).bindPopup(location.street + ' ' + location.adminArea5).addTo(map);
+                        return marker;
+                    },
+
+                    createEndMarker: function (location, stopNumber) {
+                        var custom_icon;
+                        var marker;
+
+                        custom_icon = L.icon({
+                            iconUrl: 'https://www.mapquestapi.com/staticmap/geticon?uri=poi-red_1.png',
+                            iconSize: [20, 29],
+                            iconAnchor: [10, 29],
+                            popupAnchor: [0, -29]
+                        });
+						// console.log(location);
+                        marker = L.marker(location.latLng, {icon: custom_icon}).bindPopup(location.street + ' ' + location.adminArea5).addTo(map);
+
+                        return marker;
+                    }
+                });
                 dir = MQ.routing.directions();
 
                 dir.optimizedRoute({
 					locations: id
                 });
 
-                map.addLayer(MQ.routing.routeLayer({
-                    directions: dir,
-                    fitBounds: true
-                }));
+                map.addLayer(new CustomRouteLayer({
+					directions: dir,
+					draggable: false,
+					fitBounds: true,
+					ribbonOptions: {
+                        ribbonDisplay: { color: 'purple', opacity: 0.6 }
+                    }
+				}));
+
+				// var custom_icon;
+				// var marker;
+
+				// custom_icon = L.icon({
+				// 	iconUrl: 'https://www.mapquestapi.com/staticmap/geticon?uri=poi-red_1.png',
+				// 	iconSize: [20, 29],
+				// 	iconAnchor: [10, 29],
+				// 	popupAnchor: [0, -29]
+				// });
+
+				// for(i=0;i<places.length;i+=2)
+				// {
+				// 	L.marker([parseFloat(places[i]), parseFloat(places[i+1])], {
+				// 	icon: L.mapquest.icons.marker(),
+				// 	draggable: false
+				// 	}).bindPopup('Denver, CO').addTo(map);
+				// }
             }
         </script>
     </head>
 
-    <body style='border:0; margin: 0; margin-bottom:50px'>
+	<body style='border:0; margin: 0; margin-bottom:50px'>
 		<div id='map' style='width: 100%; height:530px;'></div>
+		
+		<section id="cd-timeline" class="cd-container">
+			@foreach ($act_path as $a)
+				@php
+					$k=0;
+				@endphp
+				@foreach ($allPlaces as $p)
+					@if ($k==$a)
+						<div class="cd-timeline-block">
+							<div class="cd-timeline-img cd-movie">
+							</div>
+							<!-- cd-timeline-img -->
+				
+							<div class="cd-timeline-content">
+								<h2 style="font-size: larger">{{$p->name}}</h2>
+								<p style="font-size: small; ">{{$p->description}}</p>
+								<p style="font-size: small; font-weight: 700; color:rgb(226, 151, 226) ">Address:{{$p->address}}</p>
+								<span class="cd-date" style="font-size: medium">Day 1</span>
+							</div>
+							<!-- cd-timeline-content -->
+						</div>
+					@endif
+					@php
+						$k++;
+					@endphp
+				@endforeach
+			@endforeach
+			<div class="cd-timeline-block">
+				<div class="cd-timeline-img cd-movie">
+				</div>
+				<!-- cd-timeline-img -->
+	
+				<div class="cd-timeline-content">
+					<h2 style="font-size: larger">{{$getP[0]->name}}</h2>
+					<p style="font-size: small">{{$getP[0]->description}}</p>
+					<p style="font-size: small; font-weight: 700; color:rgb(226, 151, 226)">Address:{{$getP[0]->address}}</p>
+					<span class="cd-date" style="font-size: medium">Day 1</span>
+				</div>
+				<!-- cd-timeline-content -->
+			</div>
+		</section>
     </body>
 </html>
 @endsection

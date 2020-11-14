@@ -161,22 +161,25 @@ class PagesController extends Controller
     {
         $getLatitudes="select latitude from place where place_id in ( ";
         $getLongitudes="select longitude from place where place_id in ( ";
+        $getPlaces = "select name, description, address from place where place_id in ( ";
         for($i =0;$i<count($request->checkbox);$i++)
         {
             if($i == count($request->checkbox)-1)
             {
                 $getLatitudes .= $request->checkbox[$i]." )";
                 $getLongitudes .= $request->checkbox[$i]." )";
+                $getPlaces .= $request->checkbox[$i]." )";
             }
             else
             {
                 $getLatitudes .= $request->checkbox[$i]." , ";
                 $getLongitudes .= $request->checkbox[$i]." , ";
+                $getPlaces .= $request->checkbox[$i]." , ";
             }
         }
         $lat= DB::select($getLatitudes);
         $long= DB::select($getLongitudes);
-        
+        $allPlace = DB::select($getPlaces);
         
         // $str1="https://api.distancematrix.ai/maps/api/geocode/json?address=";
         // $address=$request->checkbox;
@@ -193,17 +196,51 @@ class PagesController extends Controller
         //     echo $str."<br>";
         // }
         // return ($latitudes);
-        $latitudes=[];
-        $longitudes=[];
+
+        
+        $latitud=[];
+        $longitud=[];
         foreach($lat as $l)
         {
-            $latitudes[]=$l->latitude;
+            $latitud[]=$l->latitude;
         }
         foreach($long as $l)
         {
-            $longitudes[]=$l->longitude;
+            $longitud[]=$l->longitude;
         }
-        return view('maps.result2', compact('latitudes','longitudes'));
+        $getJagah="select latitude, longitude from place where name= '".$request->start_point."'";
+        $getp ="select name, description, address from place where name= '".$request->start_point."'";
+        $getP= DB::select($getp);
+        $jagah = DB::select($getJagah);
+        $latitudes=[];
+        $longitudes=[];
+        $allPlaces=[];
+        $allPlaces[]=$getP[0];
+        $latitudes[]=$jagah[0]->latitude;
+        $longitudes[]=$jagah[0]->longitude;
+        foreach($allPlace as $p)
+        {   
+            if(!in_array($p, $allPlaces))
+            {
+                $allPlaces[]=$p;
+            }
+        }
+        foreach($latitud as $l)
+        {
+            if(!in_array($l, $latitudes))
+            {
+                $latitudes[]=$l;
+            }
+        }
+        foreach($longitud as $l)
+        {
+            if(!in_array($l, $longitudes))
+            {
+                $longitudes[]=$l;
+            }
+        }
+        // return($allPlaces);
+        return view('maps.result2', compact('latitudes','longitudes','allPlaces','getP'));
     }
 
     public function fun()
