@@ -15,7 +15,7 @@
         @yield('styles')
     </head>
     <body id="nice2">
-        @include('inc.navbar2')
+        @include('inc.navbar3')
         <div>
             @yield('content')
         </div>

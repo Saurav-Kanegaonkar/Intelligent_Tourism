@@ -81,6 +81,8 @@
                                     </li>
                                     <li class="rd-nav-item"><a class="rd-nav-link" href="/posts" style="font-family: 'Dancing Script', cursive;">Blog</a>
                                     </li>
+                                    <li class="rd-nav-item"><a class="rd-nav-link" href="/fun" style="font-family: 'Dancing Script', cursive;">Fun</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
