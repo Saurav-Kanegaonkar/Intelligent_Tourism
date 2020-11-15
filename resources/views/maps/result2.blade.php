@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main1')
 @section('content')
 <?php
 class TspLocation
@@ -29,31 +29,16 @@ class TspLocation
 		return $tspLocation;
 	}
 
-	public static function distance($lat1, $lon1, $lat2, $lon2, $unit = 'M')
+	public static function distance($lat1, $lon1, $lat2, $lon2, $i, $j)
 	{
-		// if ($lat1 == $lat2 && $lon1 == $lon2) return 0;
-
-		// $theta = $lon1 - $lon2; 
-		// $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
-		// $dist = acos($dist); 
-		// $dist = rad2deg($dist); 
-		// $miles = $dist * 60 * 1.1515;
-		// $unit = strtoupper($unit);
-
-		// if ($unit == "K")
-		// 	return ($miles * 1.609344); 
-		// else if ($unit == "N")
-		// 	return ($miles * 0.8684);
-		// else
-		// 	return $miles;
-
 		$str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=".$lat1.",".$lon1."&destinations=".$lat2.",".$lon2."&departure_time=now&key=xHhaXS89ZEwV9qAwgAjSucGzmNLnf";
 		$geocodeFrom = file_get_contents($str);
 		$dist = json_decode($geocodeFrom);
 		$dist1= $dist->rows[0]->elements[0]->distance->value;
-		// echo "destination_addresses: ".$dist->destination_addresses[0]."<br>origin_addresses: ".$dist->origin_addresses[0]."<br>dist ".$dist1."<br>";
-		return $dist1;
-		
+		// $traffic[$i][$j]=$dist->rows[0]->elements[0]->duration_in_traffic->text;
+		// $traffic[$j][$i]=$dist->rows[0]->elements[0]->duration_in_traffic->text;
+		// print_r($traffic);
+		return $dist1;	
 	}
 }
 
@@ -120,6 +105,7 @@ class TspBranchBound
 	protected $n = 0;
 	protected $locations = array();
 	protected $costMatrix = array();
+	protected $traffic = [];
 
 	/**
 	 * @var    array  TspBranchBound instances container.
@@ -197,6 +183,8 @@ class TspBranchBound
 			return false;
 
 		$this->costMatrix = array();
+		$this->traffic = array();
+
 		$n_locations = count($this->locations);
 		// $time4= time();
 		for ($i = 0; $i < $n_locations; $i++)
@@ -209,7 +197,7 @@ class TspBranchBound
 				{
 					$loc1 = $this->locations[$i];
 					$loc2 = $this->locations[$j];
-					$distance = TspLocation::distance($loc1->latitude, $loc1->longitude, $loc2->latitude, $loc2->longitude);
+					$distance = TspLocation::distance($loc1->latitude, $loc1->longitude, $loc2->latitude, $loc2->longitude, $i, $j);
 				}
 				$this->costMatrix[$i][$j] = $distance;
 				$this->costMatrix[$j][$i] = $distance;
@@ -399,6 +387,9 @@ try
 	}
 	
 	$ans = $tsp->solve();
+
+	$a=[2,"hi"];
+	print_r($a);
 	// $time3 = time();
 	// echo "time diff 2: ".($time3-$time1);
 	// echo "<br>";
@@ -527,7 +518,17 @@ catch (Exception $e)
 				// 	}).bindPopup('Denver, CO').addTo(map);
 				// }
             }
-        </script>
+		</script>
+		<style>
+			body{
+				background: #bdc3c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+			}
+		</style>
     </head>
 
 	<body style='border:0; margin: 0; margin-bottom:50px'>
@@ -559,19 +560,6 @@ catch (Exception $e)
 					@endphp
 				@endforeach
 			@endforeach
-			<div class="cd-timeline-block">
-				<div class="cd-timeline-img cd-movie">
-				</div>
-				<!-- cd-timeline-img -->
-	
-				<div class="cd-timeline-content">
-					<h2 style="font-size: larger">{{$getP[0]->name}}</h2>
-					<p style="font-size: small">{{$getP[0]->description}}</p>
-					<p style="font-size: small; font-weight: 700; color:rgb(226, 151, 226)">Address:{{$getP[0]->address}}</p>
-					<span class="cd-date" style="font-size: medium">Day 1</span>
-				</div>
-				<!-- cd-timeline-content -->
-			</div>
 		</section>
     </body>
 </html>

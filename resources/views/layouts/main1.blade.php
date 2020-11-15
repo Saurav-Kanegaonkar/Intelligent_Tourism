@@ -24,7 +24,7 @@
 
 <body class="archive post-type-archive post-type-archive-gd_place geodir_custom_posts geodir-page geodir-archive geodir_advance_search gd-map-auto nice2">
     <div id="ds-container">
-        @include('inc.navbar2')
+        @include('inc.navbar3')
 
 
         @yield('content')
