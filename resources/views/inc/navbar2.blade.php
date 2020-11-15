@@ -43,6 +43,7 @@
         <li><a href="/about" style="font-weight: 900;">About</a></li>
         <li><a href="/posts" style="font-weight: 900;">Blog</a></li>
         <li><a href="/trips" style="font-weight: 900;">Trips</a></li>
+        <li><a href="/Places" style="font-weight: 900;">Places</a></li>
         <li><a href="/fun"   style="font-weight: 900;">Fun</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -57,9 +58,9 @@
                 </a>
 
                 <ul class="dropdown-menu" role="menu" style="background-color: #101010;">
-                    <li><a href="/home" >Dashboard</a></li>
+                    <li><a href="/home" style="color: white !important">Dashboard</a></li>
                     <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="{{ route('logout') }}" style="color: white !important" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
                         </a>
 

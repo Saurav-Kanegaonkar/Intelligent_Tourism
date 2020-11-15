@@ -21,6 +21,7 @@ Route::get('/', [PagesController::class, 'index']);
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/trips', [PagesController::class, 'trips']);
 Route::get('/fun', [PagesController::class, 'fun']);
+Route::get('/Places', [PagesController::class, 'Places']);
 Route::post('/result', [PagesController::class, 'trips_submit']);
 // Route::get('/place/{place}', [PagesController::class, 'place_info']);
 Route::get('/place/{place}', 'PagesController@place_info')->name('place_info');

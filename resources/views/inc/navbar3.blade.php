@@ -46,6 +46,7 @@
         <li><a href="/about" style="font-weight: 900;">About</a></li>
         <li><a href="/posts" style="font-weight: 900;">Blog</a></li>
         <li><a href="/trips" style="font-weight: 900;">Trips</a></li>
+        <li><a href="/Places" style="font-weight: 900;">Places</a></li>
         <li><a href="/fun"   style="font-weight: 900;">Fun</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

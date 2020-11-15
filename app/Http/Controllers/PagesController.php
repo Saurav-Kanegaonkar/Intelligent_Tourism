@@ -247,5 +247,10 @@ class PagesController extends Controller
     {
         return view('pages.fun');
     }
+
+    public function Places()
+    {
+        return view('pages.Places');
+    }
 }
 
