@@ -38,7 +38,11 @@ class TspLocation
 		// $traffic[$i][$j]=$dist->rows[0]->elements[0]->duration_in_traffic->text;
 		// $traffic[$j][$i]=$dist->rows[0]->elements[0]->duration_in_traffic->text;
 		// print_r($traffic);
-		return $dist1;	
+		$a= array();
+		$a[0]=$dist1;
+		$a[1]=$dist->rows[0]->elements[0]->duration_in_traffic->text;
+		$a[2]=$dist->rows[0]->elements[0]->distance->text;
+		return $a;	
 	}
 }
 
@@ -105,8 +109,8 @@ class TspBranchBound
 	protected $n = 0;
 	protected $locations = array();
 	protected $costMatrix = array();
-	protected $traffic = [];
-
+	protected $traffic = array();
+	protected $costMatrixText = array();
 	/**
 	 * @var    array  TspBranchBound instances container.
 	 */
@@ -183,6 +187,7 @@ class TspBranchBound
 			return false;
 
 		$this->costMatrix = array();
+		$this->costMatrixText = array();
 		$this->traffic = array();
 
 		$n_locations = count($this->locations);
@@ -193,15 +198,24 @@ class TspBranchBound
 			for ($j = $i; $j < $n_locations; $j++)
 			{
 				$distance = INF;
+				$t="0 mins";
+				$te="0 km";
+				$b= array();
 				if ($i!=$j)
 				{
 					$loc1 = $this->locations[$i];
 					$loc2 = $this->locations[$j];
-					$distance = TspLocation::distance($loc1->latitude, $loc1->longitude, $loc2->latitude, $loc2->longitude, $i, $j);
+					$b = TspLocation::distance($loc1->latitude, $loc1->longitude, $loc2->latitude, $loc2->longitude, $i, $j);
+					$distance=$b[0];
+					$t=$b[1];
+					$te=$b[2];
 				}
 				$this->costMatrix[$i][$j] = $distance;
 				$this->costMatrix[$j][$i] = $distance;
-
+				$this->traffic[$i][$j] = $t;
+				$this->traffic[$j][$i] = $t;
+				$this->costMatrixText[$i][$j] = $te;
+				$this->costMatrixText[$j][$i] = $te;
 			}
 		}
 		// $time5= time();
@@ -306,6 +320,7 @@ class TspBranchBound
 		}
 
 		$costMatrix = $this->costMatrix;
+		$traffic = $this->traffic;
 		// Create a priority queue to store live nodes of
 		// search tree;
 		$pq = new PqTsp();
@@ -341,7 +356,7 @@ class TspBranchBound
 				// print list of cities visited;
 				$this->printPath($min->path);
 				// return optimal cost & etc.
-				return array ('cost' => $min->cost, 'path' => $min->path, 'locations' => $this->locations);
+				return array ('cost' => $min->cost, 'path' => $min->path, 'locations' => $this->locations, 'costMatrixText' => $this->costMatrixText, 'traffic' => $this->traffic);
 			}
 
 			// do for each child of min
@@ -387,14 +402,10 @@ try
 	}
 	
 	$ans = $tsp->solve();
-
-	$a=[2,"hi"];
-	print_r($a);
 	// $time3 = time();
 	// echo "time diff 2: ".($time3-$time1);
 	// echo "<br>";
 	//echo "\nTotal cost: " . ceil($ans['cost']) . "\n\n";
-	
 	$ids=[];
 	for($k=0;$k<count($ans['path']);$k++) 
 	{
@@ -522,45 +533,55 @@ catch (Exception $e)
 		<style>
 			body{
 				background: #bdc3c7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
+				background: -webkit-linear-gradient(to bottom, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to bottom, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 			}
 		</style>
+		<script>
+			$(window).load(function() {
+				$('#loader').remove();
+			});
+		</script>
     </head>
 
 	<body style='border:0; margin: 0; margin-bottom:50px'>
-		<div id='map' style='width: 100%; height:530px;'></div>
-		
-		<section id="cd-timeline" class="cd-container">
-			@foreach ($act_path as $a)
-				@php
-					$k=0;
-				@endphp
-				@foreach ($allPlaces as $p)
-					@if ($k==$a)
-						<div class="cd-timeline-block">
-							<div class="cd-timeline-img cd-movie">
-							</div>
-							<!-- cd-timeline-img -->
-				
-							<div class="cd-timeline-content">
-								<h2 style="font-size: larger">{{$p->name}}</h2>
-								<p style="font-size: small; ">{{$p->description}}</p>
-								<p style="font-size: small; font-weight: 700; color:rgb(226, 151, 226) ">Address:{{$p->address}}</p>
-								<span class="cd-date" style="font-size: medium">Day 1</span>
-							</div>
-							<!-- cd-timeline-content -->
-						</div>
-					@endif
+		{{-- <div id="loader" style="top: 0; left: 0; position: relative; display: block; text-align: center;">
+			<img src="https://i.pinimg.com/originals/a2/dc/96/a2dc9668f2cf170fe3efeb263128b0e7.gif" alt="">
+		</div> --}}
+		<div id="fin">
+			<div id='map' style='width: 100%; height:530px;'></div>
+			<section id="cd-timeline" class="cd-container">
+				@for ($j = 0; $j < count($act_path); $j++)
 					@php
-						$k++;
+						$k=0;
 					@endphp
-				@endforeach
-			@endforeach
-		</section>
+					@foreach ($allPlaces as $p)
+						@if ($k==$act_path[$j])
+							<div class="cd-timeline-block">
+								<div class="cd-timeline-img cd-movie">
+								</div>
+								<!-- cd-timeline-img -->
+					
+								<div class="cd-timeline-content">
+									<h2 style="font-size: larger">{{$p->name}}</h2>
+									<p style="font-size: small; ">{{$p->description}}</p>
+									<p style="font-size: small; font-weight: 700; color:rgb(226, 151, 226) ">Address:{{$p->address}}</p>
+									@if ($j !=0)
+										<span class="cd-date" style="font-size: medium">Time: {{$ans['traffic'][$j-1][$j]}}, Distance: {{$ans['costMatrixText'][$j-1][$j]}}</span>
+									@else
+										<span class="cd-date" style="font-size: medium">Day 1</span>
+									@endif
+								</div>
+								<!-- cd-timeline-content -->
+							</div>
+						@endif
+						@php
+							$k++;
+						@endphp
+					@endforeach
+				@endfor
+			</section>
+		</div>
     </body>
 </html>
 @endsection

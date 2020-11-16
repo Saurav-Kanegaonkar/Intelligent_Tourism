@@ -8,7 +8,7 @@
         text-transform: capitalize;
         transition: .3s;
         font-weight: 600;
-        font-size: x-large;
+        font-size: 26px;
         font-family: 'Dancing Script', cursive;
     }
     #myNavbar a:hover{

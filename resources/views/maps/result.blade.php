@@ -13,8 +13,13 @@
         background: -webkit-linear-gradient(to bottom, #A5CC82, #00467F);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to bottom, #A5CC82, #00467F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
+    select{
+        text-align-last: center;
+    }
     option{
         width: 100px;
+        color: black;
+        background-color: lightblue;    
     }
 </style>
 @endsection
@@ -97,8 +102,8 @@
                                     ?>
                                 @endforeach
                             </ul>
-                            <div class="w3layouts agileits" style="margin-left: 38%">
-                                <label for="" style="font-size:large">{{ __('Select your starting point 😎') }}</label>
+                            <div class="w3layouts agileits cool" style="margin-left: 38%">
+                                <label for="" style="color:rgb(49, 185, 15) ;font-size:large; padding-left:3.5%"><span style="color: red">* </span>{{ __('Select your starting point') }}</label><br>
                                 <select name="start_point" id="places" required>
                                     <option value="none">-- Select Starting point for your trip --</option>
                                 </select>
@@ -211,7 +216,7 @@
                                         <li>
                                             <div class="geodir-post-title">
                                                 <h4 class="geodir-entry-title">
-                                                    <a href="{{ route('place_info', '') }}/`+place.place_id+`" title="View: `+place.name+`">`+place.name+`</a>
+                                                    <a style="color:white !important;" href="{{ route('place_info', '') }}/`+place.place_id+`" title="View: `+place.name+`">`+place.name+`</a>
                                                 </h4>
                                             </div>
                                             <a href="{{ route('place_info', '') }}/`+place.place_id+`"><img src="{{asset('assets/images/shops/a`+place.place_id+`.jpg')}}" alt="`+place.name+`" class="align size-medium_large" width="1400" height="930"></a>
