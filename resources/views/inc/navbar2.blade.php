@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/" style="color: black; font-weight: 800;">SmartTourister</a>
+      <a class="navbar-brand" href="/" style="font-weight: 800; font-size:large">SmartTourister</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -40,25 +40,25 @@
             <li><a href="#">Page 1-3</a></li>
           </ul>
         </li> --}}
-        <li><a href="/about" style="font-weight: 900;">About</a></li>
-        <li><a href="/posts" style="font-weight: 900;">Blog</a></li>
-        <li><a href="/trips" style="font-weight: 900;">Trips</a></li>
-        <li><a href="/Places" style="font-weight: 900;">Places</a></li>
-        <li><a href="/fun"   style="font-weight: 900;">Fun</a></li>
+        <li><a href="/about" style="font-weight: 900; font-size:xx-large">About</a></li>
+        <li><a href="/posts" style="font-weight: 900; font-size:xx-large">Blog</a></li>
+        <li><a href="/trips" style="font-weight: 900; font-size:xx-large">Trips</a></li>
+        <li><a href="/Places" style="font-weight: 900; font-size:xx-large">Places</a></li>
+        <li><a href="/fun"   style="font-weight: 900; font-size:xx-large">Fun</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if (Auth::guest())
             <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
         @else
-            <li><a href="/posts/create">Create Posts</a></li>
+            <li><a href="/posts/create" style="font-size:xx-large">Create Posts</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="font-size:xx-large">
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu" role="menu" style="background-color: #101010;">
-                    <li><a href="/home" style="color: white !important">Dashboard</a></li>
+                    <li><a href="/home" style="color: white !important;">Dashboard</a></li>
                     <li>
                         <a href="{{ route('logout') }}" style="color: white !important" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout

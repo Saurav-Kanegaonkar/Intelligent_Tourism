@@ -47,7 +47,7 @@
                                                             <li>
                                                                 <a href="{{ route('place_info', $place->place_id) }}">
                                                                     <?php
-                                                                        $str= "http://lsapp.test/assets/images/shops/a".$place->place_id.".jpg";
+                                                                        $str= "http://lsapp.io/assets/images/shops/a".$place->place_id.".jpg";
                                                                     ?>
                                                                     <img src={{$str}} width="1440" height="960" class="geodir-lazy-load align size-medium_large" />
                                                                 </a>

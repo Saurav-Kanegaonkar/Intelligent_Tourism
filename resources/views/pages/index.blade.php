@@ -72,7 +72,7 @@
                                 </ul>
                                 <!-- RD Navbar Nav-->
                                 <ul class="rd-navbar-nav">
-                                    <li class="rd-nav-item active"><a class="rd-nav-link" href="/" style="font-family: 'Dancing Script', cursive;">Home</a>
+                                    <li class="rd-nav-item active"><a class="rd-nav-link" href="/" style="font-family: 'Dancing Script', cursive;">SmartTourister</a>
                                     </li>
                                     <li class="rd-nav-item"><a class="rd-nav-link" href="/about" style="font-family: 'Dancing Script', cursive;">About</a>
                                     </li>

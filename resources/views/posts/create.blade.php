@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        body{
+            background-color: #F5F5F5;
+        }
+    </style>
     <h2>Create Posts</h2>
     {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
@@ -16,5 +21,9 @@
         </div>
         {{Form::submit('Submit', ['class'=> 'btn btn-primary'])}}
     {!! Form::close() !!}
+    <script>
+        var element = document.getElementById("myDIV");
+        element.classList.add("act");
+    </script>
     
 @endsection

@@ -1,22 +1,36 @@
 
 <style>
-    #myNavbar a{
-        color:lightblue !important;
+    a{
+        color:white !important;
         text-transform: capitalize;
         transition: .5s;
+        font-size: large;
+        font-family: 'Dancing Script', cursive;
+        margin-right: 15px;
     }
-    #myNavbar a:hover{
-        background-color: lightblue !important;
+    a:hover{
+        color: #50ba87 !important;
+        border-top: 4px solid #50ba87;
+        background-color: rgb(255, 255, 255,0.2) !important;
+        /* background-color: lightblue !important;
         color: #101010 !important;
         box-shadow: 0 0 5px #00d9e4,
                     0 0 40px #00d9e4,
-                    0 0 40px #00d9e4;
+                    0 0 40px #00d9e4; */
+    }
+    .act{
+        color: #50ba87 !important;
+        border-top: 4px solid#50ba87;
+        background-color: rgb(255, 255, 255,0.3);
+    }
+    .wow4{
+        background-color: #162e44 !important;
     }
 </style>
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
+<nav class="wow4 navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -47,16 +61,16 @@
             <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
         @else
-            <li><a href="/posts/create">Create Posts</a></li>
+            <li id="myDIV"><a href="/posts/create">Create Posts</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
-                <ul class="dropdown-menu" role="menu" style="background-color: #101010;">
-                    <li><a href="/home" >Dashboard</a></li>
+                <ul class="dropdown-menu" role="menu" style="background-color: #162e44;">
+                    <li><a href="/home" style="color: #50ba87 !important">Dashboard</a></li>
                     <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a style="color: #50ba87 !important" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
                         </a>
 

@@ -1,12 +1,11 @@
 @extends('layouts.app2')
 
 @section('styles')
-
 <style>
     @import url("https://fonts.googleapis.com/css?family=Faster+One|Monoton");
     body {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     background: url("https://s3.amazonaws.com/ritalbradley-dev-photos/twinkle-back.gif");
     }
 
@@ -139,13 +138,13 @@
           <li class="col-md-4 ab">
             <div class='front'></div>
             <div class='back'>
-              <a href="https://mrdoob.neocities.org/017/" target="_blank"><img src='https://lh3.googleusercontent.com/proxy/WHTcfpiJd8TuZmcfS-19C0TisLD1vPpfPzJEJMr9xjHh3eM6N2r9vQswCMvbqSyfNI5O47WkSLbNtzQvJy3IlZYDLbFTnme30LFb7O912mXzhikkuEQRUP9gApFmMVRHC6OE8g'></a>
+              <a href="https://mrdoob.neocities.org/017/" target="_blank"><img src='https://www.publicdomainpictures.net/pictures/270000/nahled/falling-blocks.jpg'></a>
             </div>
           </li>
           <li class="col-md-4 ab">
             <div class='front'></div>
             <div class='back'>
-              <a href="https://robotics.ovh/" target="_blank"><img src='https://lh3.googleusercontent.com/proxy/hJvy-RiZLmwH0RS9R5QPxmHDkIRzigNrA7mOsHscfWtngkwFKT3mEtQkdgftThkFFLB3c-lH5_AuKdV0a7FAKh3lYhOxwP0i9GOc3X0'></a>
+              <a href="https://robotics.ovh/" target="_blank"><img src='https://st.depositphotos.com/1742172/1276/v/950/depositphotos_12764994-stock-illustration-vector-cartoon-robots-dancing-the.jpg'></a>
             </div>
           </li>
           <li class="col-md-4 ab">
@@ -307,7 +306,7 @@
           <li class="col-md-4 ab">
             <div class='front'></div>
             <div class='back'>
-              <a href="http://slices.ovh/" target="_blank"><img src='https://lh3.googleusercontent.com/proxy/TjvD4ACmHxCXb2J381er63fzCq8NQqEiOcbm7AcoRtH2-uUvB4VGMCm8fTmn_2O3CCroWSkKzVo'></a>
+              <a href="http://slices.ovh/" target="_blank"><img src='https://learningworksforkids.com/wp-content/uploads/sliceit_icon1.png'></a>
             </div>
           </li>
           <li class="col-md-4 ab">
@@ -343,7 +342,7 @@
           <li class="col-md-4 ab">
             <div class='front'></div>
             <div class='back'>
-              <a href="https://codepen.io/Yakudoo/pen/oXJYxy" target="_blank"><img src='https://assets.codepen.io/264161/internal/screenshots/pens/oXJYxy.custom.jpg?fit=cover&format=auto&ha=true&height=720&quality=75&v=2&version=1503062173&width=1279'></a>
+              <a href="https://codepen.io/Yakudoo/full/oXJYxy" target="_blank"><img src='https://assets.codepen.io/264161/internal/screenshots/pens/oXJYxy.custom.jpg?fit=cover&format=auto&ha=true&height=720&quality=75&v=2&version=1503062173&width=1279'></a>
             </div>
           </li>
           <li class="col-md-4 ab">
@@ -364,9 +363,14 @@
               <a href="https://tympanus.net/Development/ExplodingObjects/index-heart.html" target="_blank"><img src='https://i.pinimg.com/originals/e5/2f/f6/e52ff60009c8ca6c099f4ae61411ae76.jpg'></a>
             </div>
           </li>
+          <li class="col-md-4 ab">
+            <div class='front'></div>
+            <div class='back'>
+              <a href="https://donottouchyourface.com/" target="_blank"><img src='https://www.cslbehring.com/-/media/global-csl-behring/vita-images/dont-touch-your-face-image.jpg'></a>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
   </div>
-    
 @endsection
