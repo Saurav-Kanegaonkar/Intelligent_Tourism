@@ -199,7 +199,7 @@
                                     <h6 class="text-spacing-100 text-uppercase">Quick links</h6>
                                     <ul class="row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2">
                                         <li><a href="/about">About us</a></li>
-                                        <li><a href="/trips">Our Tours</a></li>
+                                        <li><a href="/Places">Our Tours</a></li>
                                         <li><a href="/about">Our Team</a></li>
                                         <li><a href="#">Gallery</a></li>
                                         <li><a href="/posts">Blog</a></li>
