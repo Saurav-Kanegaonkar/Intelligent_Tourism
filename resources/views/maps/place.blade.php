@@ -10,6 +10,15 @@
                         <header>
                             <h1 class="entry-title" style="color: #337ab7; font-weight: 600; font-size: x-large;">{{ $place->name }}</h1>
                         </header>
+                        <div>
+                            <?php
+                                $str= "http://lsapp.test/assets/images/shops/a".$place->place_id.".jpg";
+                            ?>
+                            <img src={{$str}} class="geodir-lazy-load align size-medium_large" style="display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 50%"/><br><br><br>
+                        </div>
                         <div class="entry-content entry-summary">
                             {{-- @if($place->photos->count())
                                 <div class="geodir-post-slider center-gallery">
@@ -224,7 +233,7 @@ background: linear-gradient(to bottom, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, 
                                                     <a href="{{ route('place_info', $place->place_id) }}" title="View: {{ $place->name }}">{{ $place->name }}</a>
                                                 </h4>
                                             </div>
-                                            <a href="{{ route('place_info', $place->place_id) }}"><img src="{{asset('assets/images/shops/a4.jpg')}}" alt="{{ $place->name }}" class="align size-medium_large" width="1400" height="930"></a>
+                                            <a href="{{ route('place_info', $place->place_id) }}"><img src={{$str}} alt="{{ $place->name }}" class="align size-medium_large" width="1400" height="930"></a>
                                         </li>
                                     </ul>
                                 </div>

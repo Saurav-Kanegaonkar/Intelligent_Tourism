@@ -567,7 +567,7 @@ catch (Exception $e)
 									<p style="font-size: small; ">{{$p->description}}</p>
 									<p style="font-size: small; font-weight: 700; color:rgb(226, 151, 226) ">Address:{{$p->address}}</p>
 									@if ($j !=0)
-										<span class="cd-date" style="font-size: medium">Time: {{$ans['traffic'][$j-1][$j]}}, Distance: {{$ans['costMatrixText'][$j-1][$j]}}</span>
+										<span class="cd-date" style="font-size: medium">Time: {{$ans['traffic'][$act_path[$j-1]][$act_path[$j]]}}, Distance: {{$ans['costMatrixText'][$act_path[$j-1]][$act_path[$j]]}}</span>
 									@else
 										<span class="cd-date" style="font-size: medium">Day 1</span>
 									@endif
