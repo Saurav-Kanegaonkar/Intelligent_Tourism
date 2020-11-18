@@ -1,6 +1,6 @@
 
 <style>
-    #myNavbar a{
+    .myNavbar a{
         color:black !important;
         text-transform: capitalize;
         transition: .3s;
@@ -8,7 +8,7 @@
         font-size: 26px;
         font-family: 'Dancing Script', cursive;
     }
-    #myNavbar a:hover{
+    .myNavbar a:hover{
         background-color: lightgray !important;
         color: #101010 !important;
         box-shadow: 0 0 5px gray,
@@ -20,16 +20,16 @@
 
 
 <nav class="navbar">
-  <div class="container-fluid">
+  <div class="container-fluid myNavbar">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/" style="font-weight: 800; font-size:large">SmartTourister</a>
+      <a class="navbar-brand" href="/">SmartTourister</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="collapse navbar-collapse" class="myNavbar">
       <ul class="nav navbar-nav">
         {{-- <li><a href="/">Home</a></li> --}}
         {{-- <li class="dropdown">

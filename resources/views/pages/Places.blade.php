@@ -27,7 +27,7 @@
         .flip > .back {
         display: block;
         transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        transition-duration: .5s;
+        transition-duration: 1.5s;
         transition-property: transform, opacity;
         }
         .flip > .front {
@@ -193,6 +193,116 @@
         <br><br>
         <button type="button" class="btn btn-dark" style="background-color: black;
         color: white"><a href="/place/10" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://www.hindustantimes.com/rf/image_size_1200x900/HT/p2/2020/01/21/Pictures/plating-devotee-around-delhi-weighing-donated-gold_2f6fc288-3c2a-11ea-bfbd-f812f33ac46f.jpg)">
+        </div>
+        <div class="back">
+        <h2>Shri Siddhi Vinayak Ganapati Mandir</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/11" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://image3.mouthshut.com/images/Restaurant/Photo/-61755_7565.jpg)">
+        </div>
+        <div class="back">
+        <h2>ISKCON Temple</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/12" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://www.mahapooja.org/wp-content/uploads/2019/07/temple-entrance.jpg)">
+        </div>
+        <div class="back">
+        <h2>Mumbadevi Temple</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/13" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/c5/Phoenix-marketcity-BLR-1.jpg)">
+        </div>
+        <div class="back">
+        <h2>Phoenix Market City</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/14" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://images.jdmagicbox.com/comp/mumbai/v2/022pxx22.xx22.110707160241.m6v2/catalogue/high-street-phoenix-lower-parel-mumbai-malls-vrbxczaxc4.jpg?clr=#333333)">
+        </div>
+        <div class="back">
+        <h2>High Street Phoenix Mall</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/15" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/9/97/Infiniti_Mall_-_Malad.jpg)">
+        </div>
+        <div class="back">
+        <h2>Infiniti Mall</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/16" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://www.malls2shop.com/admin/malls/47/47.jpg)">
+        </div>
+        <div class="back">
+        <h2>Growel's 101</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/17" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-m/1280/15/71/f9/35/wonderful-weekend-gateway.jpg)">
+        </div>
+        <div class="back">
+        <h2>Aksa Beach</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/18" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://www.nativeplanet.com/img/2016/06/kovalambeach-20-1466398724.jpg)">
+        </div>
+        <div class="back">
+        <h2>Madh Island Beach</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/19" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://content3.jdmagicbox.com/comp/mumbai/k9/022pxx22.xx22.131229153156.c2k9/catalogue/five-garden-dadar-east-mumbai-tourist-attraction-3vvsglc.jpg)">
+        </div>
+        <div class="back">
+        <h2>5 Gardens</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/20" style="color: white; text-decoration:none">Read More</a></button>
+        </div>
+    </div>
+    <div class="flip">
+        <div class="front" style="background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/15/19/88/12/global-vipassana-pagoda.jpg)">
+        </div>
+        <div class="back">
+        <h2>Global Vipassana Pagoda</h2>
+        <br><br>
+        <button type="button" class="btn btn-dark" style="background-color: black;
+        color: white"><a href="/place/21" style="color: white; text-decoration:none">Read More</a></button>
         </div>
     </div>
     <br>

@@ -14,12 +14,13 @@
         background: linear-gradient(to bottom, #A5CC82, #00467F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
     select{
+        width: 300px;
         text-align-last: center;
     }
     option{
         width: 100px;
         color: black;
-        background-color: lightblue;    
+        background-color: white;    
     }
 </style>
 @endsection
@@ -52,7 +53,7 @@
                                                             <li>
                                                                 <a href="{{ route('place_info', $place->place_id) }}">
                                                                     <?php
-                                                                        $str= "http://lsapp.test/assets/images/shops/a".$place->place_id.".jpg";
+                                                                        $str= "http://lsapp.io/assets/images/shops/a".$place->place_id.".jpg";
                                                                     ?>
                                                                     <img src={{$str}} width="1440" height="960" class="geodir-lazy-load align size-medium_large" />
                                                                 </a>
@@ -103,7 +104,7 @@
                                 @endforeach
                             </ul>
                             <div class="w3layouts agileits cool" style="margin-left: 38%">
-                                <label for="" style="color:rgb(49, 185, 15) ;font-size:large; padding-left:3.5%"><span style="color: red">* </span>{{ __('Select your starting point') }}</label><br>
+                                <label for="" style="color:rgb(49, 185, 15) ;font-size:large; padding-left:5%"><span style="color: red">* </span>{{ __('Select your starting point') }}</label><br>
                                 <select name="start_point" id="places" required>
                                     <option value="none">-- Select Starting point for your trip --</option>
                                 </select>

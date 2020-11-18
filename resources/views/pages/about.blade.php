@@ -73,7 +73,7 @@
                                 </ul>
                                 <!-- RD Navbar Nav-->
                                 <ul class="rd-navbar-nav">
-                                    <li class="rd-nav-item"><a class="rd-nav-link" href="/" style="font-family: 'Dancing Script', cursive;">SmartTourister</a>
+                                    <li class="rd-nav-item"><a class="rd-nav-link" href="/" style="font-family: 'Dancing Script', cursive !important;">SmartTourister</a>
                                     </li>
                                     <li class="rd-nav-item active"><a class="rd-nav-link" href="/about" style="font-family: 'Dancing Script', cursive;">About</a>
                                     </li>
@@ -202,7 +202,7 @@
                         <div class="thumbnail-mary-figure"><img src="https://www.orangesmile.com/common/img_cities_original/bombay--2092174-11.jpg" alt="" width="420" height="308" />
                         </div>
                         <div class="thumbnail-mary-caption">
-                            <a class="icon fl-bigmug-line-zoom60" href="{{ asset('images2/gallery-image-11-1200x800-original.jpg') }}" data-lightgallery="item"><img src="{{ asset('images2/gallery-image-11-420x308.jpg') }}" alt="" width="420" height="308" /></a>
+                            <a class="icon fl-bigmug-line-zoom60" href="https://www.orangesmile.com/common/img_cities_original/bombay--2092174-11.jpg" data-lightgallery="item"><img src="https://www.orangesmile.com/common/img_cities_original/bombay--2092174-11.jpg" alt="" width="420" height="308" /></a>
                         </div>
                     </article>
                     <div class="thumbnail-mary-description">
@@ -232,7 +232,7 @@
                         <div class="thumbnail-mary-figure"><img src="https://media.gettyimages.com/photos/architectural-details-of-a-temple-swaminarayan-akshardham-temple-picture-id481685827?k=6&m=481685827&s=612x612&w=0&h=hFUqyPArLUYPWbv3Be__FqkdOwDVAemW0SErdwP0YHY=" alt="" width="420" height="308" />
                         </div>
                         <div class="thumbnail-mary-caption">
-                            <a class="icon fl-bigmug-line-zoom60" href="{{ asset('images2/gallery-image-13-1200x800-original.jpg') }}" data-lightgallery="item"><img src="{{ asset('images2/gallery-image-13-420x308.jpg') }}" alt="" width="420" height="308" /></a>
+                            <a class="icon fl-bigmug-line-zoom60" href="https://media.gettyimages.com/photos/architectural-details-of-a-temple-swaminarayan-akshardham-temple-picture-id481685827?k=6&m=481685827&s=612x612&w=0&h=hFUqyPArLUYPWbv3Be__FqkdOwDVAemW0SErdwP0YHY=" data-lightgallery="item"><img src="https://media.gettyimages.com/photos/architectural-details-of-a-temple-swaminarayan-akshardham-temple-picture-id481685827?k=6&m=481685827&s=612x612&w=0&h=hFUqyPArLUYPWbv3Be__FqkdOwDVAemW0SErdwP0YHY=" alt="" width="420" height="308" /></a>
                         </div>
                     </article>
                     <div class="thumbnail-mary-description">
@@ -247,7 +247,7 @@
                         <div class="thumbnail-mary-figure"><img src="https://media.gettyimages.com/photos/visitors-are-seen-exploring-the-asias-largest-rock-garden-in-rock-picture-id1139191670?k=6&m=1139191670&s=612x612&w=0&h=ntAuDllhl-KscWhw-b1eCIvjZZ6CS-gw1mgKO84xWig=" alt="" width="420" height="308" />
                         </div>
                         <div class="thumbnail-mary-caption">
-                            <a class="icon fl-bigmug-line-zoom60" href="{{ asset('images2/gallery-image-14-1200x800-original.jpg') }}" data-lightgallery="item"><img src="{{ asset('images2/gallery-image-14-420x308.jpg') }}" alt="" width="420" height="308" /></a>
+                            <a class="icon fl-bigmug-line-zoom60" href="https://media.gettyimages.com/photos/visitors-are-seen-exploring-the-asias-largest-rock-garden-in-rock-picture-id1139191670?k=6&m=1139191670&s=612x612&w=0&h=ntAuDllhl-KscWhw-b1eCIvjZZ6CS-gw1mgKO84xWig=" data-lightgallery="item"><img src="https://media.gettyimages.com/photos/visitors-are-seen-exploring-the-asias-largest-rock-garden-in-rock-picture-id1139191670?k=6&m=1139191670&s=612x612&w=0&h=ntAuDllhl-KscWhw-b1eCIvjZZ6CS-gw1mgKO84xWig=" alt="" width="420" height="308" /></a>
                         </div>
                     </article>
                     <div class="thumbnail-mary-description">
@@ -262,7 +262,7 @@
                         <div class="thumbnail-mary-figure"><img src="https://www.orangesmile.com/common/img_cities_original/new-delhi--2106102-10.jpg" alt="" width="420" height="308" />
                         </div>
                         <div class="thumbnail-mary-caption">
-                            <a class="icon fl-bigmug-line-zoom60" href="{{ asset('images2/gallery-image-15-1200x800-original.jpg') }}" data-lightgallery="item"><img src="{{ asset('images2/gallery-image-15-420x308.jpg') }}" alt="" width="420" height="308" /></a>
+                            <a class="icon fl-bigmug-line-zoom60" href="https://www.orangesmile.com/common/img_cities_original/new-delhi--2106102-10.jpg" data-lightgallery="item"><img src="https://www.orangesmile.com/common/img_cities_original/new-delhi--2106102-10.jpg" alt="" width="420" height="308" /></a>
                         </div>
                     </article>
                     <div class="thumbnail-mary-description">
@@ -277,7 +277,7 @@
                         <div class="thumbnail-mary-figure"><img src="https://image.freepik.com/free-photo/confluence-indus-zanskar-rivers-leh-ladakh-india_1150-11112.jpg" alt="" width="420" height="308" />
                         </div>
                         <div class="thumbnail-mary-caption">
-                            <a class="icon fl-bigmug-line-zoom60" href="{{ asset('images2/gallery-image-16-1200x800-original.jpg') }}" data-lightgallery="item"><img src="{{ asset('images2/gallery-image-16-420x308.jpg') }}" alt="" width="420" height="308" /></a>
+                            <a class="icon fl-bigmug-line-zoom60" href="https://image.freepik.com/free-photo/confluence-indus-zanskar-rivers-leh-ladakh-india_1150-11112.jpg" data-lightgallery="item"><img src="https://image.freepik.com/free-photo/confluence-indus-zanskar-rivers-leh-ladakh-india_1150-11112.jpg" alt="" width="420" height="308" /></a>
                         </div>
                     </article>
                     <div class="thumbnail-mary-description">
@@ -360,7 +360,7 @@
                             </div>
                             <div class="col-sm-6 col-md-5 col-lg-3">
                                 <div class="counter-classic">
-                                    <div class="counter-classic-number"><span class="counter">25</span>
+                                    <div class="counter-classic-number"><span class="counter">3</span>
                                     </div>
                                     <h5 class="counter-classic-title">Team members</h5>
                                 </div>

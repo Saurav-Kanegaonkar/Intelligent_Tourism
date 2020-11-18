@@ -19,6 +19,14 @@
                     0 0 40px gray;
         border-radius: 16px;
     }
+    #hm:hover{
+      background-color: lightgray !important;
+      color: #101010 !important;
+      box-shadow: 0 0 5px gray,
+                  0 0 40px gray,
+                  0 0 40px gray;
+      border-radius: 16px;
+    }
 </style>
 
 
@@ -30,7 +38,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="/" style="color: black; font-weight: 800;">SmartTourister</a>
+      <a class="navbar-brand" href="/" id="hm" style="color: white; font-size: 26px; font-weight: 600; font-family: 'Dancing Script', cursive;">SmartTourister</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
