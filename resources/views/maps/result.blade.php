@@ -53,7 +53,7 @@
                                                             <li>
                                                                 <a href="{{ route('place_info', $place->place_id) }}">
                                                                     <?php
-                                                                        $str= "http://lsapp.test/assets/images/shops/a".$place->place_id.".jpg";
+                                                                        $str= "http://lsapp.io/assets/images/shops/a".$place->place_id.".jpg";
                                                                     ?>
                                                                     <img src={{$str}} width="1440" height="960" class="geodir-lazy-load align size-medium_large" />
                                                                 </a>
@@ -103,7 +103,8 @@
                                     ?>
                                 @endforeach
                             </ul>
-                            <div class="w3layouts agileits cool" style="margin-left: 38%">
+                            <br><br>
+                            <div class="w3layouts agileits cool" style="margin-left: 35%">
                                 <label for="" style="color:rgb(49, 185, 15) ;font-size:large; padding-left:5%"><span style="color: red">* </span>{{ __('Select your starting point') }}</label><br>
                                 <select name="start_point" id="places" required>
                                     <option value="none">-- Select Starting point for your trip --</option>
@@ -220,7 +221,7 @@
                                                     <a style="color:white !important;" href="{{ route('place_info', '') }}/`+place.place_id+`" title="View: `+place.name+`">`+place.name+`</a>
                                                 </h4>
                                             </div>
-                                            <a href="{{ route('place_info', '') }}/`+place.place_id+`"><img src="{{asset('assets/images/shops/a`+place.place_id+`.jpg')}}" alt="`+place.name+`" class="align size-medium_large" width="1400" height="930"></a>
+                                            <a href="{{ route('place_info', '') }}/`+place.place_id+`"><img src="{{asset('assets/images/shops/a`+place.place_id+`.jpg')}}" alt="`+place.name+`" class="align size-medium_large" width="1400" height="930" style="padding-right:7px"></a>
                                         </li>
                                     </ul>
                                 </div>

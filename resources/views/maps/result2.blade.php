@@ -40,7 +40,7 @@ class TspLocation
 		// print_r($traffic);
 		$a= array();
 		$a[0]=$dist1;
-		$a[1]=$dist->rows[0]->elements[0]->duration_in_traffic->text;
+		$a[1]=$dist->rows[0]->elements[0]->duration->text;
 		$a[2]=$dist->rows[0]->elements[0]->distance->text;
 		return $a;	
 	}
@@ -62,7 +62,7 @@ class TspNode
 	 * @param   array    $path           An array of integers for the path.
 	 * @param   integer  $level          The level of the node.
 	 * @param   integer  $i, $j          They are corresponds to visiting city j from city i
-	 *
+	 * 							$costMatrix, null, 0, -1, 0
 	 */
 	public function __construct($parentMatrix, $path, $level, $i, $j)
 	{
@@ -98,7 +98,8 @@ class TspNode
 
 class PqTsp extends SplPriorityQueue
 {
-	public function compare($lhs, $rhs) {
+	public function compare($lhs, $rhs) 
+	{
 		if ($lhs === $rhs) return 0;
 		return ($lhs < $rhs) ? 1 : -1;
 	}
@@ -198,8 +199,8 @@ class TspBranchBound
 			for ($j = $i; $j < $n_locations; $j++)
 			{
 				$distance = INF;
-				$t="0 mins";
-				$te="0 km";
+				$time="0 mins";
+				$text="0 km";
 				$b= array();
 				if ($i!=$j)
 				{
@@ -207,15 +208,15 @@ class TspBranchBound
 					$loc2 = $this->locations[$j];
 					$b = TspLocation::distance($loc1->latitude, $loc1->longitude, $loc2->latitude, $loc2->longitude, $i, $j);
 					$distance=$b[0];
-					$t=$b[1];
-					$te=$b[2];
+					$time=$b[1];
+					$text=$b[2];
 				}
 				$this->costMatrix[$i][$j] = $distance;
 				$this->costMatrix[$j][$i] = $distance;
-				$this->traffic[$i][$j] = $t;
-				$this->traffic[$j][$i] = $t;
-				$this->costMatrixText[$i][$j] = $te;
-				$this->costMatrixText[$j][$i] = $te;
+				$this->traffic[$i][$j] = $time;
+				$this->traffic[$j][$i] = $time;
+				$this->costMatrixText[$i][$j] = $text;
+				$this->costMatrixText[$j][$i] = $text;
 			}
 		}
 		// $time5= time();
@@ -280,6 +281,15 @@ class TspBranchBound
 
 	protected function calculateCost(&$reducedMatrix)
 	{
+		// i	9	10
+		// 9	i	6
+		// 10	6	i
+		
+		// i	0	1
+		// 0	i	0
+		// 1	0	i
+		// row=[9,6,6]
+		// col=[3,0,0]
 		// initialize cost to 0
 		$cost = 0;
 

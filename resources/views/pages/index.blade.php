@@ -190,7 +190,7 @@
                                 <!-- Tab panes-->
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="tabs-7-1">
-                                        <p>Wonder Tour is committed to bringing our clients the best in value and quality travel arrangements. We are passionate about travel and sharing the world's wonders with you.</p>
+                                        <p>SmartTourister is committed to bringing our clients the best in value and quality travel arrangements. We are passionate about travel and sharing the world's wonders with you.</p>
                                         <div class="group-md group-middle"><a class="button button-black-outline button-md" href="/about">Read More</a></div>
                                     </div>
                                     <div class="tab-pane fade" id="tabs-7-2">
@@ -311,9 +311,9 @@
                                         <h5 class="product-big-title"><a href="https://www.fabhotels.com/blog/places-to-visit-in-mumbai/">Mumbai, Maharashtra</a></h5>
                                         <div class="group-sm group-middle justify-content-start">
                                             <div class="product-big-rating"><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div>
-                                            <a class="product-big-reviews" href="#">4 customer reviews</a>
+                                            <a class="product-big-reviews" href="#">4.5 customer reviews</a>
                                         </div>
-                                        <p class="product-big-text">Benidorm is a buzzing resort with a big reputation for beach holidays. Situated in sunny Costa Blanca, the town is one of the original Spanish beach resorts...</p>
+                                        <p class="product-big-text">Mumbai, formerly known as Bombay, is the coastal capital of Maharashtra state in west-central India. It’s the country’s financial and commercial capital and its principal port on the Arabian Sea. With an estimated population exceeding 12 million, it’s the most populous city in India that’s home to some of the country’s richest neighborhoods.</p>
                                         <div class="product-big-price-wrap"><span class="product-big-price">₹54,999</span></div>
                                     </div>
                                 </div>
@@ -334,7 +334,7 @@
                                             <div class="product-big-rating"><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star"></span><span class="icon material-icons-star_half"></span></div>
                                             <a class="product-big-reviews" href="#">5 customer reviews</a>
                                         </div>
-                                        <p class="product-big-text">The beautiful and inviting island nation of Mauritius is an ideal ‘flop and drop’ at the conclusion of your safari. Indulge in the delightful scents of the fragrant...</p>
+                                        <p class="product-big-text">Ahmedabad has several floridly carved historic monuments including the Stepwell at Adalaj and the Rani Mosques (dedicated to Rani Sipri and Rani Rupmati). It is also home to many fine museums and art galleries. Modern office buildings and malls dot the more recently developed areas..</p>
                                         <div class="product-big-price-wrap"><span class="product-big-price">₹49,999</span></div>
                                     </div>
                                 </div>
@@ -362,7 +362,7 @@
                             </div>
                             <div class="team-modern-caption">
                                 <h6 class="team-modern-name"><a href="#">Saurav Kanegaonkar</a></h6>
-                                <p class="team-modern-status">Front-End Developer</p>
+                                <p class="team-modern-status">TY CS</p>
                                 <h6 class="team-modern-phone"><a href="tel:#">181070029</a></h6>
                             </div>
                         </article>
@@ -380,7 +380,7 @@
                             </div>
                             <div class="team-modern-caption">
                                 <h6 class="team-modern-name"><a href="#">Hemish Panchal</a></h6>
-                                <p class="team-modern-status">Back-End Developer</p>
+                                <p class="team-modern-status">TY CS</p>
                                 <h6 class="team-modern-phone"><a href="tel:#">181070040</a></h6>
                             </div>
                         </article>
@@ -398,7 +398,7 @@
                             </div>
                             <div class="team-modern-caption">
                                 <h6 class="team-modern-name"><a href="#">Yashwik Panchal</a></h6>
-                                <p class="team-modern-status">AI Expert</p>
+                                <p class="team-modern-status">TY CS</p>
                                 <h6 class="team-modern-phone"><a href="tel:#">181070041</a></h6>
                             </div>
                         </article>
@@ -548,7 +548,7 @@
                         </div>
                         <div class="col-sm-6 col-md-4 order-sm-first">
                             <!-- Rights-->
-                            <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Wonder Tour</span>. All Rights Reserved. Design by SHY Brothers😎😎</p>
+                            <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>SmartTourister</span>. All Rights Reserved. Design by SHY Brothers😎😎</p>
                         </div>
                         <div class="col-sm-6 col-md-4 text-md-right">
                             <p class="rights"><a href="#">Privacy Policy</a></p>

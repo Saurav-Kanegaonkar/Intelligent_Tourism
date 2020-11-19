@@ -116,7 +116,6 @@
 		<div class="content-left w3layouts agileits">
             <img src="{{ asset('images/background.jpg') }}" alt="W3layouts Agileits" style="height: 780px">
 			<p>Plan your next dream trip. Select your destination and leave the rest to us.</p>
-			<a class="more w3layouts agileits" href="#">LEARN MORE</a>
 			<!-- <div class="list w3layouts agileits">
 				<ul class="w3layouts agileits">
 					<li class="w3layouts agileits"><a href="#">About</a></li>
@@ -174,7 +173,7 @@
 									{{-- <label>Age</label>
 									<input type="number" Name="age" required=""> --}}
 									<br><label for="age">{{ __('Age') }}</label><br>
-									<input id="age" type="number" class="@error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age">
+									<input id="age" type="number" max="70" class="@error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age">
 							
 										@error('age')
 											<span class="invalid-feedback" role="alert">
@@ -221,3 +220,4 @@
 </html>
 
 @endsection
+

@@ -12,12 +12,9 @@
                         </header>
                         <div>
                             <?php
-                                $str= "http://lsapp.test/assets/images/shops/a".$place->place_id.".jpg";
+                                $str= "http://lsapp.io/assets/images/shops/a".$place->place_id.".jpg";
                             ?>
-                            <img src={{$str}} class="geodir-lazy-load align size-medium_large" style="display: block;
-                            margin-left: auto;
-                            margin-right: auto;
-                            width: 50%"/><br><br><br>
+                            <img src={{$str}} class="geodir-lazy-load align size-medium_large" style="display: block; margin-left: auto; margin-right: auto; width: 50%"/><br><br><br>
                         </div>
                         <div class="entry-content entry-summary">
                             {{-- @if($place->photos->count())

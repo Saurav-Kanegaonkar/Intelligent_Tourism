@@ -140,10 +140,10 @@
                     @foreach ($posts as $post)
                         <div class="card">
                             <div class="row">
-                                <div class="col-md-5 col-sm-5">
+                                <div class="col-md-4 col-sm-4">
                                     <img style='width:100%; height:100%' src="/storage/cover_images/{{$post->cover_image}}" alt="">
                                 </div>
-                                <div class="col-md-7 col-sm-7 card-body">
+                                <div class="col-md-8 col-sm-8 card-body">
                                     <a href="/posts/{{$post->id}}"><h3 style="margin-bottom: 60px !important">{{$post->title}}</h3></a>
                                     <div style="font-size: large; padding-bottom:140px;">
                                         {!! $post->body !!}
@@ -251,3 +251,5 @@
 </body>
 
 </html>
+
+
