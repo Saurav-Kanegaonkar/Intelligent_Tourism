@@ -91,8 +91,9 @@
 	<div class="container w3layouts agileits">
 
 		<div class="content-left w3layouts agileits">
-            <img src="{{ asset('images/see.jpeg') }}" alt="W3layouts Agileits" style="height: 980px">
-			
+            <img src="{{ asset('images/see.jpeg') }}" alt="W3layouts Agileits" style="height: 980px; opacity: 0.75";>
+			<p>Do you want to check out the exclusive trips planned by us?</p>
+			<a class="more w3layouts agileits" href="/ready_trips">CLICK HERE!</a>
 			<!-- <div class="list w3layouts agileits">
 				<ul class="w3layouts agileits">
 					<li class="w3layouts agileits"><a href="#">About</a></li>

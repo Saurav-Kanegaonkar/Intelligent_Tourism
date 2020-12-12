@@ -18,7 +18,7 @@ class PagesController extends Controller
     */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['trips','trips_submit']]);
+        $this->middleware('auth');
     }
     
 
@@ -161,7 +161,7 @@ class PagesController extends Controller
     {
         $getLatitudes="select latitude from place where place_id in ( ";
         $getLongitudes="select longitude from place where place_id in ( ";
-        $getPlaces = "select name, description, address from place where place_id in ( ";
+        $getPlaces = "select place_id, name, description, address from place where place_id in ( ";
         for($i =0;$i<count($request->checkbox);$i++)
         {
             if($i == count($request->checkbox)-1)
@@ -179,7 +179,7 @@ class PagesController extends Controller
         }
         $lat= DB::select($getLatitudes);
         $long= DB::select($getLongitudes);
-        $allPlace = DB::select($getPlaces);
+        $allPlaces = DB::select($getPlaces);
         
         // $str1="https://api.distancematrix.ai/maps/api/geocode/json?address=";
         // $address=$request->checkbox;
@@ -198,49 +198,161 @@ class PagesController extends Controller
         // return ($latitudes);
 
         
-        $latitud=[];
-        $longitud=[];
+        $latitudes=[];
+        $longitudes=[];
         foreach($lat as $l)
         {
-            $latitud[]=$l->latitude;
+            $latitudes[]=$l->latitude;
         }
         foreach($long as $l)
         {
-            $longitud[]=$l->longitude;
+            $longitudes[]=$l->longitude;
         }
-        $getJagah="select latitude, longitude from place where name= '".$request->start_point."'";
-        $getp ="select name, description, address from place where name= '".$request->start_point."'";
-        $getP= DB::select($getp);
-        $jagah = DB::select($getJagah);
+        $add=$request->address;
+        $add1=$request->address;
+        for($i=0;$i<strlen($add);$i++)
+        {
+            if($add[$i]==" ")
+            {
+                $add[$i]="+";
+            }
+        }
+        $str="https://api.distancematrix.ai/maps/api/geocode/json?address=".$add."&key=7LRyRqiDhanQmNFe8RBcGiuSQXJPn";
+        $geocodeFrom = file_get_contents($str);
+        $addr = json_decode($geocodeFrom);
+        $la=$addr->result[0]->geometry->location->lat;
+        $long=$addr->result[0]->geometry->location->lng;
+        array_unshift($latitudes,$la);
+        array_unshift($longitudes,$long);
+        // $getJagah="select latitude, longitude from place where name= '".$request->start_point."'";
+        // $getp ="select place_id, name, description, address from place where name= '".$request->start_point."'";
+        // $getP= DB::select($getp);
+        // $jagah = DB::select($getJagah);
+        // $latitudes=[];
+        // $longitudes=[];
+        // $allPlaces=[];
+        // $allPlaces[]=$getP[0];
+        // $latitudes[]=$jagah[0]->latitude;
+        // $longitudes[]=$jagah[0]->longitude;
+        // foreach($allPlace as $p)
+        // {   
+        //     if(!in_array($p, $allPlaces))
+        //     {
+        //         $allPlaces[]=$p;
+        //     }
+        // }
+        // foreach($latitud as $l)
+        // {
+        //     if(!in_array($l, $latitudes))
+        //     {
+        //         $latitudes[]=$l;
+        //     }
+        // }
+        // foreach($longitud as $l)
+        // {
+        //     if(!in_array($l, $longitudes))
+        //     {
+        //         $longitudes[]=$l;
+        //     }
+        // }
+        $object = (object) ['place_id' => 0, 'name' => 'Your Address','description' => '', 'address' =>$add1];
+        // var_dump($object);
+        array_unshift($allPlaces,$object);
+        // return($allPlaces);
+        return view('maps.result2', compact('latitudes','longitudes','allPlaces','add1'));
+    }
+
+    public function ready_trips()
+    {
+        return view('pages.readytrips');
+    }
+
+    public function trip1()
+    {
+        $getLatitudes="select latitude from place where place_id in (1,6,8,9,10)";
+        $getLongitudes="select longitude from place where place_id in (1,6,8,9,10)";
+        $getPlaces = "select place_id, name, description, address from place where place_id in (1,6,8,9,10)";
+        $lat= DB::select($getLatitudes);
+        $long= DB::select($getLongitudes);
+        $allPlaces = DB::select($getPlaces);
         $latitudes=[];
         $longitudes=[];
-        $allPlaces=[];
-        $allPlaces[]=$getP[0];
-        $latitudes[]=$jagah[0]->latitude;
-        $longitudes[]=$jagah[0]->longitude;
-        foreach($allPlace as $p)
-        {   
-            if(!in_array($p, $allPlaces))
-            {
-                $allPlaces[]=$p;
-            }
-        }
-        foreach($latitud as $l)
+        foreach($lat as $l)
         {
-            if(!in_array($l, $latitudes))
-            {
-                $latitudes[]=$l;
-            }
+            $latitudes[]=$l->latitude;
         }
-        foreach($longitud as $l)
+        foreach($long as $l)
         {
-            if(!in_array($l, $longitudes))
-            {
-                $longitudes[]=$l;
-            }
+            $longitudes[]=$l->longitude;
         }
         // return($allPlaces);
-        return view('maps.result2', compact('latitudes','longitudes','allPlaces','getP'));
+        return view('maps.result3', compact('latitudes','longitudes','allPlaces'));
+    }
+
+    public function trip2()
+    {
+        $getLatitudes="select latitude from place where place_id in (4,11,12,13)";
+        $getLongitudes="select longitude from place where place_id in (4,11,12,13)";
+        $getPlaces = "select place_id, name, description, address from place where place_id in (4,11,12,13)";
+        $lat= DB::select($getLatitudes);
+        $long= DB::select($getLongitudes);
+        $allPlaces = DB::select($getPlaces);
+        $latitudes=[];
+        $longitudes=[];
+        foreach($lat as $l)
+        {
+            $latitudes[]=$l->latitude;
+        }
+        foreach($long as $l)
+        {
+            $longitudes[]=$l->longitude;
+        }
+        // return($allPlaces);
+        return view('maps.result3', compact('latitudes','longitudes','allPlaces'));
+    }
+
+    public function trip3()
+    {
+        $getLatitudes="select latitude from place where place_id in (3,10,18,19)";
+        $getLongitudes="select longitude from place where place_id in (3,10,18,19)";
+        $getPlaces = "select place_id, name, description, address from place where place_id in (3,10,18,19)";
+        $lat= DB::select($getLatitudes);
+        $long= DB::select($getLongitudes);
+        $allPlaces = DB::select($getPlaces);
+        $latitudes=[];
+        $longitudes=[];
+        foreach($lat as $l)
+        {
+            $latitudes[]=$l->latitude;
+        }
+        foreach($long as $l)
+        {
+            $longitudes[]=$l->longitude;
+        }
+        // return($allPlaces);
+        return view('maps.result3', compact('latitudes','longitudes','allPlaces'));
+    }
+
+    public function trip4()
+    {
+        $getLatitudes="select latitude from place where place_id in (17,16,15,14)";
+        $getLongitudes="select longitude from place where place_id in (17,16,15,14)";
+        $getPlaces = "select place_id, name, description, address from place where place_id in (17,16,15,14)";
+        $lat= DB::select($getLatitudes);
+        $long= DB::select($getLongitudes);
+        $allPlaces = DB::select($getPlaces);
+        $latitudes=[];
+        $longitudes=[];
+        foreach($lat as $l)
+        {
+            $latitudes[]=$l->latitude;
+        }
+        foreach($long as $l)
+        {
+            $longitudes[]=$l->longitude;
+        }
+        // return($allPlaces);
+        return view('maps.result3', compact('latitudes','longitudes','allPlaces'));
     }
 
     public function fun()

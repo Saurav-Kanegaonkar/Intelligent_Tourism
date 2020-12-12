@@ -20,6 +20,11 @@ Route::get('/', [PagesController::class, 'index']);
 
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/trips', [PagesController::class, 'trips']);
+Route::get('/ready_trips', [PagesController::class, 'ready_trips']);
+Route::get('/trip1', [PagesController::class, 'trip1']);
+Route::get('/trip2', [PagesController::class, 'trip2']);
+Route::get('/trip3', [PagesController::class, 'trip3']);
+Route::get('/trip4', [PagesController::class, 'trip4']);
 Route::get('/fun', [PagesController::class, 'fun']);
 Route::get('/Places', [PagesController::class, 'Places']);
 Route::post('/result', [PagesController::class, 'trips_submit']);

@@ -104,12 +104,16 @@
                                 @endforeach
                             </ul>
                             <br><br>
-                            <div class="w3layouts agileits cool" style="margin-left: 35%">
+                            <div class="w3layouts agileits" style="text-align:center">
+                                <label style="font-size: large">Enter your address</label><br>    
+                                <textarea name="address" rows="3" cols="80" style="max-width: 90%; font-size: medium"></textarea>
+                            </div>
+                            {{-- <div class="w3layouts agileits cool" style="margin-left: 35%">
                                 <label for="" style="color:rgb(49, 185, 15) ;font-size:large; padding-left:5%"><span style="color: red">* </span>{{ __('Select your starting point') }}</label><br>
                                 <select name="start_point" id="places" required>
                                     <option value="none">-- Select Starting point for your trip --</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <br><br><br>
                             <div class="clear"></div>
                             <div class="send-button w3layouts agileits">
