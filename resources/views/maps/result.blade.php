@@ -135,7 +135,7 @@
 @endsection
 
 @section('scripts')
-<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDOZF22hjdjUWzNRraAZb55W87sLkG4zEg&libraries=places&region=GB'></script>
+<script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key={{ env("GOOGLE_MAPS_API_KEY") }}&libraries=places&region=GB'></script>
 <script defer>
     function dothis(){
         var places = @json($place_detail);

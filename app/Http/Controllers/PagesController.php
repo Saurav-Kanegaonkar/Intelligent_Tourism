@@ -192,7 +192,7 @@ class PagesController extends Controller
         //     }
         // }
         // foreach ($address as $a) {
-        //     $str = $str1.$a."&key=KHICvAsdohw3sxQt36C9BvxNkYlNZ";
+        //     $str = $str1.$a."&key=".env('DISTANCE_MATRIX_API_KEY');
         //     echo $str."<br>";
         // }
         // return ($latitudes);
@@ -217,7 +217,8 @@ class PagesController extends Controller
                 $add[$i]="+";
             }
         }
-        $str="https://api.distancematrix.ai/maps/api/geocode/json?address=".$add."&key=7LRyRqiDhanQmNFe8RBcGiuSQXJPn";
+        // echo env('DISTANCE_MATRIX_API_KEY');
+        $str="https://api.distancematrix.ai/maps/api/geocode/json?address=".$add."&key=".env('DISTANCE_MATRIX_API_KEY');
         $geocodeFrom = file_get_contents($str);
         $addr = json_decode($geocodeFrom);
         $la=$addr->result[0]->geometry->location->lat;

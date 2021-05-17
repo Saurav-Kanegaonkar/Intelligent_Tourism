@@ -25,7 +25,7 @@
 
   <div id="mymap" style="height: 500px; width: 100%; position: relative; overflow: hidden;"></div>
 
-  <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDOZF22hjdjUWzNRraAZb55W87sLkG4zEg&libraries=places&region=GB'></script>
+  <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key={{ env("GOOGLE_MAPS_API_KEY") }}&libraries=places&region=GB'></script>
   <script type="text/javascript">
 
 

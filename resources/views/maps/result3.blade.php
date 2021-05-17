@@ -31,7 +31,7 @@ class TspLocation
 
 	public static function distance($lat1, $lon1, $lat2, $lon2, $i, $j)
 	{
-		$str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=".$lat1.",".$lon1."&destinations=".$lat2.",".$lon2."&departure_time=now&key=7LRyRqiDhanQmNFe8RBcGiuSQXJPn";
+		$str="https://api.distancematrix.ai/maps/api/distancematrix/json?origins=".$lat1.",".$lon1."&destinations=".$lat2.",".$lon2."&departure_time=now&key=".env('DISTANCE_MATRIX_API_KEY');
 		$geocodeFrom = file_get_contents($str);
 		$dist = json_decode($geocodeFrom);
 		$dist1= $dist->rows[0]->elements[0]->distance->value;
@@ -443,8 +443,8 @@ catch (Exception $e)
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=Ry3pRty0H7reDbXBApz4QthSBpdV5tLr"></script>
-        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=Ry3pRty0H7reDbXBApz4QthSBpdV5tLr"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key={{ env('MAPQUEST_API_KEY') }}"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key={{ env('MAPQUEST_API_KEY') }}"></script>
 
 		<link rel='stylesheet' href='{{ asset('assets/css/timeline.css') }}' type='text/css' />
 		<script type="text/javascript">

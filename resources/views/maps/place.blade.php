@@ -191,7 +191,7 @@ background: linear-gradient(to bottom, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, 
     });
 </script>
 @if($place->latitude && $place->longitude)
-    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyDOZF22hjdjUWzNRraAZb55W87sLkG4zEg&libraries=places&region=GB'></script>
+    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key={{ env("GOOGLE_MAPS_API_KEY") }}&libraries=places&region=GB'></script>
     <script defer>
         function initialize() {
             var latLng = new google.maps.LatLng({{ $place->latitude }}, {{ $place->longitude }});
