@@ -30,7 +30,7 @@ Note that you name our website ending with .io and not .dev , example: what we h
 
 ### Travelling Salesman Problem using Branch and Bound Approach in PHP
 
-    The sales person needs to visit some cities or places. we had to plan him routes, from house to house. the shorter route would be good. we can solve this by TSP algorithm. we could take him places as latitudes and longitudes. from this locations details, we can generates a possible ways matrix. then we can apply the TSP for this matrix to find a path. i just converted the algorithm from a CPP code. By this way, we can be found the least cost of travel or distance or time. here i used distance matrix to find shorter route
+The sales person needs to visit some cities or places. we had to plan him routes, from house to house. the shorter route would be good. we can solve this by TSP algorithm. we could take him places as latitudes and longitudes. from this locations details, we can generates a possible ways matrix. then we can apply the TSP for this matrix to find a path. i just converted the algorithm from a CPP code. By this way, we can be found the least cost of travel or distance or time. here i used distance matrix to find shorter route
 
 For the code we referred to this [website](https://ideone.com/0TBgxr).
 
