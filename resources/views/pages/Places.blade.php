@@ -196,7 +196,7 @@
         </div>
     </div>
     <div class="flip">
-        <div class="front" style="background-image: url(https://www.hindustantimes.com/rf/image_size_1200x900/HT/p2/2020/01/21/Pictures/plating-devotee-around-delhi-weighing-donated-gold_2f6fc288-3c2a-11ea-bfbd-f812f33ac46f.jpg)">
+        <div class="front" style="background-image: url(https://www.billdesk.com/siddhivinayak/images/1.jpg)">
         </div>
         <div class="back">
         <h2>Shri Siddhi Vinayak Ganapati Mandir</h2>
@@ -216,7 +216,7 @@
         </div>
     </div>
     <div class="flip">
-        <div class="front" style="background-image: url(https://www.mahapooja.org/wp-content/uploads/2019/07/temple-entrance.jpg)">
+        <div class="front" style="background-image: url(https://imgk.timesnownews.com/story/Mumba_Devi_temple.jpeg?tr=w-600,h-450,fo-auto)">
         </div>
         <div class="back">
         <h2>Mumbadevi Temple</h2>
